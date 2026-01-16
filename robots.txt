@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://TWOJ_LOGIN.github.io/decisionary/sitemap.xml
+Sitemap: https://sossolinski.github.io/decisionary/sitemap.xml

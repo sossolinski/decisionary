@@ -1,171 +1,136 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Decisionary - Tabletop simulation exercises for crisis, emergency response and operational readiness." />
-  <title>Decisionary - Tabletop Simulation Platform</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Decisionary — crisis & tabletop exercise platform</title>
 
-  <link rel="canonical" href="https://decisionary.app/">
+  <meta name="description" content="Decisionary helps organizations run structured tabletop exercises, log decisions, and generate fast after-action reports." />
 
-  <!-- SEO (GitHub Pages / repo mode): use relative paths -->
-  <link rel="canonical" href="./" />
-  <link rel="alternate" hreflang="en" href="./" />
-  <link rel="alternate" hreflang="pl" href="../pl/" />
-  <link rel="alternate" hreflang="x-default" href="./" />
-
-  <link rel="stylesheet" href="../assets/styles.css" />
+  <link rel="stylesheet" href="/assets/styles.css" />
 </head>
 
 <body>
 
-  <!-- Topbar -->
+  <!-- anchor for safe scroll-to-top (sticky header aware) -->
+  <div id="top" aria-hidden="true"></div>
+
+  <!-- =====================
+       Topbar
+       ===================== -->
   <div class="topbar">
-    <div class="container">
-      <div class="nav">
-        <div class="brand">
-          <a href="#top" aria-label="Decisionary home">
-            <img class="logo-img" src="../assets/logo.svg" alt="Decisionary logo" />
-          </a>
+    <div class="container topbar-inner">
+
+      <a href="#top" class="brand" aria-label="Decisionary home">
+        <img src="/assets/logo.svg" alt="Decisionary logo" class="logo-img" />
+        <span>Decisionary</span>
+      </a>
+
+      <nav>
+        <a href="#product">Product</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+
+        <div class="lang">
+          <a href="/" data-lang-switch="true">PL</a>
+          <a href="/en/" class="active">EN</a>
         </div>
 
-        <div class="nav-right">
-          <nav class="menu">
-            <a href="#product">Product</a>
-            <a href="#usecases">Use cases</a>
-            <a href="#pricing">Pricing</a>
-            <a href="#faq">FAQ</a>
-            <a href="#contact">Contact</a>
-          </nav>
+        <a href="#contact" class="btn small primary">Request demo</a>
+      </nav>
 
-          <div class="lang">
-            <a class="active" href="./" aria-current="page">EN</a>
-            <a href="../pl/" data-lang-switch="true">PL</a>
-          </div>
-
-          <a class="btn primary small" href="#contact">Request a demo</a>
-        </div>
-      </div>
     </div>
   </div>
 
-  <!-- Hero -->
-  <header class="hero" id="top">
-    <div class="container">
-      <div class="hero-grid">
-        <div>
-          <div class="kicker">Tabletop simulations</div>
-          <h1>Run better crisis & emergency exercises</h1>
-          <p class="lead">
-            Decisionary helps teams design, run and debrief realistic tabletop simulations —
-            structured, repeatable and facilitator-friendly.
-          </p>
+  <!-- =====================
+       Hero
+       ===================== -->
+  <header class="hero">
+    <div class="container hero-grid">
 
-          <div class="cta-row">
-            <a href="#contact" class="btn primary">Request a demo</a>
-            <a href="#product" class="btn ghost">Learn more</a>
-          </div>
+      <div>
+        <h1>Run better tabletop exercises.<br/>Make better decisions.</h1>
+        <p class="muted">
+          Decisionary is a lightweight platform for crisis-management and ERP tabletop exercises —
+          from inject timelines to decision logs and after-action reports.
+        </p>
+
+        <div class="cta">
+          <a href="#contact" class="btn primary">Request demo</a>
+          <a href="#pricing" class="btn">View pricing</a>
         </div>
       </div>
+
+      <div class="hero-card">
+        <ul>
+          <li>Scenario & inject builder</li>
+          <li>Decision and action logging</li>
+          <li>Structured After-Action Reports</li>
+          <li>Designed for ERP & BCM exercises</li>
+        </ul>
+      </div>
+
     </div>
   </header>
 
-  <!-- Product -->
-  <section id="product" class="section">
+  <!-- =====================
+       Product
+       ===================== -->
+  <section id="product">
     <div class="container">
-      <h2>What is Decisionary?</h2>
-      <p class="section-lead">
-        A lightweight platform to support tabletop exercises —
-        from scenario setup to after-action review.
+      <h2>Product</h2>
+      <p class="muted">
+        Designed for facilitators, observers and crisis teams running structured exercises.
       </p>
     </div>
   </section>
 
-  <!-- Use cases -->
-  <section id="usecases" class="section muted">
+  <!-- =====================
+       Pricing
+       ===================== -->
+  <section id="pricing">
     <div class="container">
-      <h2>Use cases</h2>
+      <h2>Simple, scalable pricing</h2>
+      <p class="muted">
+        Choose a plan based on how advanced your exercises and organizational needs are.
+      </p>
+
+      <!-- pricing cards – layout untouched, CSS next step -->
+      <div class="pricing-grid">
+        <!-- cards stay as-is for now -->
+      </div>
     </div>
   </section>
 
-  <!-- Pricing -->
-  <section id="pricing" class="section">
+  <!-- =====================
+       Contact
+       ===================== -->
+  <section id="contact">
     <div class="container">
-      <h2>Pricing</h2>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq" class="section muted">
-    <div class="container">
-      <h2>FAQ</h2>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="section">
-    <div class="container narrow">
       <h2>Request a demo</h2>
 
-      <form id="demoForm" novalidate>
-        <label>
-          Name
-          <input type="text" id="name" required />
-        </label>
+      <form id="demoForm">
+        <input id="name" type="text" placeholder="Name" required />
+        <input id="email" type="email" placeholder="Work email" required />
+        <input id="org" type="text" placeholder="Organization" />
+        <textarea id="notes" placeholder="Context / goals"></textarea>
 
-        <label>
-          Work email
-          <input type="email" id="email" required />
-        </label>
-
-        <label>
-          Organization
-          <input type="text" id="org" />
-        </label>
-
-        <label>
-          Notes
-          <textarea id="notes" rows="4"></textarea>
-        </label>
-
-        <div class="actions">
-          <button type="submit" class="btn primary">Request demo</button>
-          <button type="button" id="prefill" class="btn ghost">Prefill example</button>
-        </div>
+        <button type="submit" class="btn primary">Send request</button>
       </form>
-
-      <div style="margin-top:14px; border-top:1px solid rgba(11,18,32,0.10); padding-top:14px">
-        <p style="margin:0; color:var(--muted)">
-          <button type="button"
-                  class="btn"
-                  id="emailBtn"
-                  aria-label="Reveal email address">
-            ✉️ Prefer email?
-          </button>
-          <span id="emailSlot" class="fine" style="margin-left:10px"></span>
-        </p>
-      </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer">
+  <!-- =====================
+       Footer
+       ===================== -->
+  <footer>
     <div class="container">
-      <div class="footer-grid">
-        <div>© <span id="year"></span>2026 Decisionary.app</div>
-        <div class="links">
-          <a href="#security">Security</a>
-          <a href="#pricing">Pricing</a>
-          <a href="#faq">FAQ</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </div>
+      <p>
+        © <span id="year"></span> Decisionary
+      </p>
     </div>
   </footer>
 
-  <!-- Floating back-to-top button -->
-  <button class="to-top" id="toTop" type="button" aria-label="Back to top">↑</button>
-
-  <script src="../assets/app.js" defer></script>
+  <script src="/assets/app.js" defer></script>
 </body>
 </html>

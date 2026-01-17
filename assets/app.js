@@ -258,6 +258,70 @@
   };
 
   /* =========================================================
+     8) Hero mock inject ticker (rotating sample logs)
+  ========================================================= */
+
+  const initMockTicker = () => {
+    const logs = $$('.mock .log');
+    if (logs.length === 0) return;
+
+    const reduceMotion =
+      window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reduceMotion) return;
+
+    const pool = [
+      '[14:12] Inject #6 delivered • [14:14] Decision logged: escalate to Crisis Team • Owner: Ops Lead',
+      '[14:19] Action assigned: draft stakeholder update • Due: 15:00 • Status: Open',
+      '[14:23] Inject: regulator inquiry received • Decision: activate Legal + Comms workstream • Owner: Duty Manager',
+      '[14:27] Inject: crew availability drops • Decision: re-plan rotations + prioritize critical flights • Owner: Crew Control',
+      '[14:31] Inject: passenger escalation on social • Action: publish holding statement • Owner: Comms Lead',
+      '[14:36] Inject: vendor outage confirmed • Decision: switch to contingency provider • Owner: IT Incident Lead',
+      '[14:41] Inject: airport constraints announced • Decision: initiate disruption playbook • Owner: OCC Manager',
+      '[14:46] Decision: stand-up cadence every 20 min • Action: assign note-taker and tracker • Owner: Crisis Lead',
+      '[14:52] Inject: media request received • Decision: single spokesperson + briefing pack • Owner: PR Duty Officer',
+      '[15:00] Action update: stakeholder note sent • Status: Done • Evidence: email ref #A-129'
+    ];
+
+    let i = 0;
+
+    const setLog = (el, text) => {
+      el.textContent = text;
+      el.scrollLeft = 0;
+
+      // subtle swap motion
+      el.style.transition = 'none';
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(4px)';
+
+      requestAnimationFrame(() => {
+        el.style.transition = 'opacity 220ms ease, transform 220ms ease';
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0px)';
+      });
+    };
+
+    // Initialize (keep current text if present, but ensure two different lines)
+    logs.forEach((el) => {
+      setLog(el, pool[i % pool.length]);
+      i += 1;
+    });
+
+    const tick = () => {
+      // rotate one log at a time (subtle, less distracting)
+      const el = logs[i % logs.length];
+      setLog(el, pool[i % pool.length]);
+      i += 1;
+
+      const delay = 2000 + Math.floor(Math.random() * 1000); // 2–3s
+      window.setTimeout(tick, delay);
+    };
+
+    window.setTimeout(tick, 2400);
+  };
+
+  /* =========================================================
      Boot
   ========================================================= */
 
@@ -268,5 +332,6 @@
   initPrefill();
   initEmailReveal();
   initLangSwitch();
+  initMockTicker();
 
 })();

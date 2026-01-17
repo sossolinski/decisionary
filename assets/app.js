@@ -287,20 +287,32 @@
     let i = 0;
 
     const setLog = (el, text) => {
-      el.textContent = text;
-      el.scrollLeft = 0;
+  el.textContent = text;
+  el.scrollLeft = 0;
 
-      // subtle swap motion
-      el.style.transition = 'none';
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(4px)';
+  // remove previous highlight
+  el.classList.remove('is-new');
 
-      requestAnimationFrame(() => {
-        el.style.transition = 'opacity 220ms ease, transform 220ms ease';
-        el.style.opacity = '1';
-        el.style.transform = 'translateY(0px)';
-      });
-    };
+  // subtle entry motion
+  el.style.transition = 'none';
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(4px)';
+
+  requestAnimationFrame(() => {
+    el.style.transition = 'opacity 220ms ease, transform 220ms ease';
+    el.style.opacity = '1';
+    el.style.transform = 'translateY(0px)';
+
+    // mark as new event
+    el.classList.add('is-new');
+
+    // remove highlight after ~1s
+    window.setTimeout(() => {
+      el.classList.remove('is-new');
+    }, 900);
+  });
+};
+
 
     // Initialize (keep current text if present, but ensure two different lines)
     logs.forEach((el) => {

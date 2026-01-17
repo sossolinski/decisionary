@@ -1,112 +1,137 @@
-(function () {
+(() => {
+  'use strict';
 
-  /* -----------------------------
-     Smooth scroll for internal links (with sticky header offset)
-  ----------------------------- */
-  function getTopOffset() {
-    const topbar = document.querySelector('.topbar');
+  /* =========================================================
+     Helpers
+  ========================================================= */
+
+  const $ = (sel, root = document) => root.querySelector(sel);
+  const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+
+  const getLang = () => document.documentElement.getAttribute('lang') || 'en';
+
+  const getTopOffset = () => {
+    const topbar = $('.topbar');
     if (!topbar) return 0;
     return Math.ceil(topbar.getBoundingClientRect().height) + 8;
-  }
+  };
 
-  function scrollToHash(hash, smooth) {
+  const getDecisionaryEmail = () => {
+    // Keep the address slightly harder to scrape by bots.
+    const user = ['h','e','l','l','o'].join('');
+    const domain = ['d','e','c','i','s','i','o','n','a','r','y','.','a','p','p'].join('');
+    return `${user}@${domain}`;
+  };
+
+  const scrollToHash = (hash, smooth = true) => {
     if (!hash || hash === '#') return;
-    const target = document.querySelector(hash);
+
+    let target = null;
+    try {
+      target = document.querySelector(hash);
+    } catch (_) {
+      return; // invalid selector
+    }
     if (!target) return;
 
-    const offset = getTopOffset();
-    const y = target.getBoundingClientRect().top + window.pageYOffset - offset;
+    const y = target.getBoundingClientRect().top + window.pageYOffset - getTopOffset();
+    window.scrollTo({ top: Math.max(0, y), behavior: smooth ? 'smooth' : 'auto' });
+  };
 
-    window.scrollTo({
-      top: Math.max(0, y),
-      behavior: smooth ? 'smooth' : 'auto'
+  const replaceHash = (hash) => {
+    try {
+      history.replaceState(null, '', hash);
+    } catch (_) {
+      // no-op
+    }
+  };
+
+  /* =========================================================
+     1) Smooth scroll for in-page anchors (with sticky offset)
+  ========================================================= */
+
+  const bindSmoothAnchors = () => {
+    $$('a[href^="#"]').forEach((a) => {
+      a.addEventListener('click', (e) => {
+        const hash = a.getAttribute('href');
+        if (!hash || hash === '#') return;
+
+        let target = null;
+        try {
+          target = document.querySelector(hash);
+        } catch (_) {
+          return;
+        }
+        if (!target) return;
+
+        e.preventDefault();
+        scrollToHash(hash, true);
+        replaceHash(hash);
+      });
     });
-  }
 
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', (e) => {
-      const id = a.getAttribute('href');
-      if (!id || id === '#') return;
-
-      const target = document.querySelector(id);
-      if (!target) return;
-
-      e.preventDefault();
-      scrollToHash(id, true);
-      history.replaceState(null, "", id);
+    // If entering the page with a hash in URL
+    window.addEventListener('load', () => {
+      const hash = window.location.hash || '';
+      if (!hash) return;
+      window.setTimeout(() => scrollToHash(hash, false), 0);
     });
-  });
+  };
 
-  // If entering the page with a hash in URL
-  window.addEventListener('load', () => {
-    const hash = window.location.hash || '';
-    if (!hash) return;
-    window.setTimeout(() => scrollToHash(hash, false), 0);
-  });
+  /* =========================================================
+     2) Floating "back to top" button
+  ========================================================= */
 
-  /* -----------------------------
-     Floating "back to top" button
-  ----------------------------- */
-  const toTop = document.getElementById('toTop');
-  if (toTop) {
-    function toggleToTop() {
+  const initToTop = () => {
+    const toTop = $('#toTop');
+    if (!toTop) return;
+
+    const toggle = () => {
       if (window.scrollY > 400) toTop.classList.add('show');
       else toTop.classList.remove('show');
-    }
+    };
 
-    window.addEventListener('scroll', toggleToTop, { passive: true });
-    toggleToTop();
+    window.addEventListener('scroll', toggle, { passive: true });
+    toggle();
 
     toTop.addEventListener('click', (e) => {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      history.replaceState(null, "", '#top');
+      replaceHash('#top');
     });
-  }
+  };
 
-  /* -----------------------------
-     Footer year
-  ----------------------------- */
-  const year = document.getElementById('year');
-  if (year) year.textContent = new Date().getFullYear();
+  /* =========================================================
+     3) Footer year
+  ========================================================= */
 
-  /* -----------------------------
-     Helpers
-  ----------------------------- */
-  function getDecisionaryEmail() {
-    // Keep the address slightly harder to scrape by bots.
-    const user = ['h','e','l','l','o'].join('');
-    const domain = ['d','e','c','i','s','i','o','n','a','r','y','.','a','p','p'].join('');
-    return user + '@' + domain;
-  }
+  const setFooterYear = () => {
+    const year = $('#year');
+    if (year) year.textContent = String(new Date().getFullYear());
+  };
 
-  /* -----------------------------
-     Contact form – send via mailto: (no backend required)
+  /* =========================================================
+     4) Contact form (mailto: no backend)
+  ========================================================= */
 
-     IMPORTANT:
-     A static site cannot send emails directly from the browser without a
-     backend/service (e.g. Formspree/EmailJS/serverless function). This
-     implementation opens the user's default mail client with a prefilled
-     message.
-  ----------------------------- */
-  const form = document.getElementById('demoForm');
-  if (form) {
+  const initDemoForm = () => {
+    const form = $('#demoForm');
+    if (!form) return;
+
     form.addEventListener('submit', (e) => {
       e.preventDefault();
 
       // Let the browser show built-in validation UI.
-      if (typeof form.reportValidity === 'function' && !form.reportValidity()) {
-        return;
-      }
+      if (typeof form.reportValidity === 'function' && !form.reportValidity()) return;
 
-      const lang = document.documentElement.getAttribute('lang') || 'en';
+      const lang = getLang();
       const btn = form.querySelector('button[type="submit"]');
-      const old = btn ? btn.textContent : '';
+      const oldText = btn ? btn.textContent : '';
 
-      const name = (document.getElementById('name')?.value || '').trim();
-      const email = (document.getElementById('email')?.value || '').trim();
-      const org = (document.getElementById('org')?.value || '').trim();
-      const notes = (document.getElementById('notes')?.value || '').trim();
+      const name = ($('#name')?.value || '').trim();
+      const email = ($('#email')?.value || '').trim();
+      const org = ($('#org')?.value || '').trim();
+      const notes = ($('#notes')?.value || '').trim();
 
       const to = getDecisionaryEmail();
       const subject = (lang === 'pl')
@@ -114,9 +139,11 @@
         : `Decisionary demo request${org ? ' — ' + org : ''}`;
 
       const bodyLines = [
-        (lang === 'pl') ? 'Dzień dobry,' : 'Hello,' ,
+        (lang === 'pl') ? 'Dzień dobry,' : 'Hello,',
         '',
-        (lang === 'pl') ? 'Chciał(a)bym poprosić o demo. Szczegóły:' : 'I would like to request a demo. Details:',
+        (lang === 'pl')
+          ? 'Chciał(a)bym poprosić o demo. Szczegóły:'
+          : 'I would like to request a demo. Details:',
         '',
         `Name: ${name || '-'}`,
         `Work email: ${email || '-'}`,
@@ -129,39 +156,44 @@
         name || ''
       ];
 
-      const mailto = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
+      const mailto =
+        `mailto:${encodeURIComponent(to)}` +
+        `?subject=${encodeURIComponent(subject)}` +
+        `&body=${encodeURIComponent(bodyLines.join('\n'))}`;
 
       if (btn) {
         btn.textContent = (lang === 'pl') ? 'Otwieram pocztę…' : 'Opening mail…';
         btn.disabled = true;
       }
 
-      // Trigger the email client.
       window.location.href = mailto;
 
-      // UX: restore button quickly and optionally reset the form.
+      // UX: restore quickly and reset.
       window.setTimeout(() => {
         if (btn) {
-          btn.textContent = old;
+          btn.textContent = oldText;
           btn.disabled = false;
         }
         form.reset();
       }, 600);
     });
-  }
+  };
 
-  /* -----------------------------
-     Prefill example
-  ----------------------------- */
-  const prefill = document.getElementById('prefill');
-  if (prefill) {
+  /* =========================================================
+     5) Prefill example
+  ========================================================= */
+
+  const initPrefill = () => {
+    const prefill = $('#prefill');
+    if (!prefill) return;
+
     prefill.addEventListener('click', () => {
-      const lang = document.documentElement.getAttribute('lang') || 'en';
+      const lang = getLang();
 
-      const name = document.getElementById('name');
-      const email = document.getElementById('email');
-      const org = document.getElementById('org');
-      const notes = document.getElementById('notes');
+      const name = $('#name');
+      const email = $('#email');
+      const org = $('#org');
+      const notes = $('#notes');
 
       if (name) name.value = 'Sebastian O.';
       if (email) email.value = 'name@company.com';
@@ -180,40 +212,61 @@
           'Include a crisis communications segment and action tracking.';
       }
     });
-  }
+  };
 
-  /* -----------------------------
-     Email reveal (bot-resistant)
-  ----------------------------- */
-  const emailBtn = document.getElementById('emailBtn');
-  const emailSlot = document.getElementById('emailSlot');
+  /* =========================================================
+     6) Email reveal (bot-resistant)
+  ========================================================= */
 
-  if (emailBtn && emailSlot) {
+  const initEmailReveal = () => {
+    const emailBtn = $('#emailBtn');
+    const emailSlot = $('#emailSlot');
+    if (!emailBtn || !emailSlot) return;
+
     emailBtn.addEventListener('click', () => {
       const addr = getDecisionaryEmail();
 
-      emailSlot.innerHTML =
-        '<a href="mailto:' + addr + '" ' +
-        'style="font-family:var(--mono); text-decoration:underline">' +
-        addr +
-        '</a>';
+      // Use DOM to avoid innerHTML injection footguns.
+      const a = document.createElement('a');
+      a.href = `mailto:${addr}`;
+      a.textContent = addr;
+      a.style.fontFamily = 'var(--mono)';
+      a.style.textDecoration = 'underline';
+
+      emailSlot.innerHTML = '';
+      emailSlot.appendChild(a);
 
       emailBtn.remove();
     });
-  }
+  };
 
-  /* -----------------------------
-     Language switch – keep hash
-  ----------------------------- */
-  document.querySelectorAll('a[data-lang-switch="true"]').forEach(link => {
-    link.addEventListener('click', (e) => {
-      const href = link.getAttribute('href') || '';
-      const hash = window.location.hash || '';
-      if (hash && !href.includes('#')) {
-        e.preventDefault();
-        window.location.href = href + hash;
-      }
+  /* =========================================================
+     7) Language switch – keep hash
+  ========================================================= */
+
+  const initLangSwitch = () => {
+    $$('a[data-lang-switch="true"]').forEach((link) => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href') || '';
+        const hash = window.location.hash || '';
+        if (hash && !href.includes('#')) {
+          e.preventDefault();
+          window.location.href = href + hash;
+        }
+      });
     });
-  });
+  };
+
+  /* =========================================================
+     Boot
+  ========================================================= */
+
+  bindSmoothAnchors();
+  initToTop();
+  setFooterYear();
+  initDemoForm();
+  initPrefill();
+  initEmailReveal();
+  initLangSwitch();
 
 })();

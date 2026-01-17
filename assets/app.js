@@ -3,31 +3,65 @@
   /* -----------------------------
      Smooth scroll for internal links (with sticky header offset)
   ----------------------------- */
-  function getTopbarOffset() {
-    const topbar = document.querySelector('.topbar');
-    const h = topbar ? topbar.getBoundingClientRect().height : 0;
-    // small breathing room so headings aren't glued to the bar
-    return Math.ceil(h + 10);
+  function getHeaderOffset() {
+    const bar = document.querySelector('.topbar');
+    if (!bar) return 0;
+    // +8px "oddechu" żeby nagłówki nie kleiły się do belki
+    return (bar.getBoundingClientRect().height || 0) + 8;
   }
 
-  function scrollToTarget(target) {
-    const offset = getTopbarOffset();
-    const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-    window.scrollTo({ top, behavior: 'smooth' });
+  function scrollToTarget(target, behavior) {
+    if (!target) return;
+
+    const offset = getHeaderOffset();
+    const rect = target.getBoundingClientRect();
+    const y = rect.top + window.pageYOffset - offset;
+
+    window.scrollTo({
+      top: Math.max(0, Math.round(y)),
+      behavior: behavior || 'smooth'
+    });
+  }
+
+  function handleHash(hash, behavior) {
+    if (!hash) return;
+
+    // Normalizujemy hash
+    const id = hash.startsWith('#') ? hash : ('#' + hash);
+
+    // Specjalnie obsłuż top
+    if (id === '#top') {
+      window.scrollTo({ top: 0, behavior: behavior || 'smooth' });
+      return;
+    }
+
+    const target = document.querySelector(id);
+    if (!target) return;
+    scrollToTarget(target, behavior);
   }
 
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', (e) => {
-      const id = a.getAttribute('href');
-      if (!id || id === '#') return;
+      const href = a.getAttribute('href');
+      if (!href || href === '#') return;
 
-      const target = document.querySelector(id);
-      if (!target) return;
+      const target = document.querySelector(href);
+      if (!target && href !== '#top') return;
 
       e.preventDefault();
-      scrollToTarget(target);
-      history.replaceState(null, "", id);
+      handleHash(href, 'smooth');
+
+      // Aktualizujemy URL bez skakania
+      history.replaceState(null, "", href);
     });
+  });
+
+  // Jeśli strona odpala się z hashem — przewiń z offsetem (bez animacji)
+  window.addEventListener('load', () => {
+    if (window.location.hash) {
+      // małe opóźnienie, żeby sticky header miał już finalną wysokość
+      window.setTimeout(() => handleHash(window.location.hash, 'auto'), 0);
+    }
   });
 
   /* -----------------------------
@@ -54,6 +88,7 @@
     form.addEventListener('submit', (e) => {
       e.preventDefault();
 
+      // Let the browser show built-in validation UI.
       if (typeof form.reportValidity === 'function' && !form.reportValidity()) {
         return;
       }
@@ -95,8 +130,10 @@
         btn.disabled = true;
       }
 
+      // Trigger the email client.
       window.location.href = mailto;
 
+      // UX: restore button quickly and optionally reset the form.
       window.setTimeout(() => {
         if (btn) {
           btn.textContent = old;
@@ -171,47 +208,6 @@
         window.location.href = href + hash;
       }
     });
-  });
-
-  /* -----------------------------
-     Back to top floating button
-  ----------------------------- */
-  const toTop = document.getElementById('toTop');
-  const topTarget = document.getElementById('top');
-
-  if (toTop) {
-    const toggle = () => {
-      const show = window.scrollY > 500;
-      toTop.classList.toggle('show', show);
-    };
-
-    toggle();
-    window.addEventListener('scroll', toggle, { passive: true });
-
-    toTop.addEventListener('click', () => {
-      if (topTarget) {
-        scrollToTarget(topTarget);
-        history.replaceState(null, "", "#top");
-      } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    });
-  }
-
-  /* -----------------------------
-     Logo debug helper (non-invasive)
-     If logo fails to load, show fallback mark instead of broken image.
-  ----------------------------- */
-  document.querySelectorAll('img.logo-img').forEach(img => {
-    img.addEventListener('error', () => {
-      img.style.display = 'none';
-      const fallback = document.createElement('span');
-      fallback.className = 'logo-fallback';
-      fallback.setAttribute('aria-hidden', 'true');
-      img.insertAdjacentElement('afterend', fallback);
-      // Optional console hint (helps with GitHub Pages case-sensitivity issues)
-      // console.warn('Logo failed to load. Check path/case: ../assets/logo.svg');
-    }, { once: true });
   });
 
 })();

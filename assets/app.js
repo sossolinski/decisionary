@@ -1,20 +1,72 @@
-<script>
 (function () {
 
   /* -----------------------------
-     Smooth scroll for internal links
+     Smooth scroll for internal links (with sticky header offset)
   ----------------------------- */
+  function getTopOffset() {
+    const topbar = document.querySelector('.topbar');
+    if (!topbar) return 0;
+    // mały bufor, żeby nagłówki nie „przyklejały się” pod topbar
+    return Math.ceil(topbar.getBoundingClientRect().height) + 8;
+  }
+
+  function scrollToHash(hash, smooth) {
+    if (!hash || hash === '#') return;
+
+    const target = document.querySelector(hash);
+    if (!target) return;
+
+    const offset = getTopOffset();
+    const y = target.getBoundingClientRect().top + window.pageYOffset - offset;
+
+    window.scrollTo({
+      top: Math.max(0, y),
+      behavior: smooth ? 'smooth' : 'auto'
+    });
+  }
+
+  // Kliknięcia w linki #...
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', (e) => {
       const id = a.getAttribute('href');
       if (!id || id === '#') return;
+
       const target = document.querySelector(id);
       if (!target) return;
+
       e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      scrollToHash(id, true);
       history.replaceState(null, "", id);
     });
   });
+
+  // Jeśli ktoś wchodzi na URL z hashem (np. /en/#pricing)
+  window.addEventListener('load', () => {
+    const hash = window.location.hash || '';
+    if (!hash) return;
+    // po load, żeby layout (sticky) się ustabilizował
+    window.setTimeout(() => scrollToHash(hash, false), 0);
+  });
+
+  /* -----------------------------
+     Floating "back to top" button
+  ----------------------------- */
+  const toTop = document.getElementById('toTop');
+  if (toTop) {
+    function toggleToTop() {
+      if (window.scrollY > 400) toTop.classList.add('show');
+      else toTop.classList.remove('show');
+    }
+
+    window.addEventListener('scroll', toggleToTop, { passive: true });
+    toggleToTop();
+
+    toTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      history.replaceState(null, "", '#top');
+    });
+  }
 
   /* -----------------------------
      Footer year
@@ -81,92 +133,4 @@
         name || ''
       ];
 
-      const mailto = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
-
-      if (btn) {
-        btn.textContent = (lang === 'pl') ? 'Otwieram pocztę…' : 'Opening mail…';
-        btn.disabled = true;
-      }
-
-      // Trigger the email client.
-      window.location.href = mailto;
-
-      // UX: restore button quickly and optionally reset the form.
-      window.setTimeout(() => {
-        if (btn) {
-          btn.textContent = old;
-          btn.disabled = false;
-        }
-        form.reset();
-      }, 600);
-    });
-  }
-
-  /* -----------------------------
-     Prefill example
-  ----------------------------- */
-  const prefill = document.getElementById('prefill');
-  if (prefill) {
-    prefill.addEventListener('click', () => {
-      const lang = document.documentElement.getAttribute('lang') || 'en';
-
-      const name = document.getElementById('name');
-      const email = document.getElementById('email');
-      const org = document.getElementById('org');
-      const notes = document.getElementById('notes');
-
-      if (name) name.value = 'Sebastian O.';
-      if (email) email.value = 'name@company.com';
-
-      if (lang === 'pl') {
-        if (org) org.value = 'Zespół pilotażowy Decisionary';
-        if (notes) notes.value =
-          'Prowadzimy ćwiczenia tabletop ERP w formule hybrydowej. ' +
-          'Chcemy ustrukturyzowanej osi injectów, rejestru decyzji i szybkiego AAR. ' +
-          'Dodaj segment komunikacji kryzysowej oraz śledzenie działań usprawniających.';
-      } else {
-        if (org) org.value = 'Decisionary Pilot Team';
-        if (notes) notes.value =
-          'We run ERP tabletop exercises with hybrid participants. ' +
-          'We want structured inject timelines, decision logging, and a fast AAR output. ' +
-          'Include a crisis communications segment and action tracking.';
-      }
-    });
-  }
-
-  /* -----------------------------
-     Email reveal (bot-resistant)
-  ----------------------------- */
-  const emailBtn = document.getElementById('emailBtn');
-  const emailSlot = document.getElementById('emailSlot');
-
-  if (emailBtn && emailSlot) {
-    emailBtn.addEventListener('click', () => {
-      const addr = getDecisionaryEmail();
-
-      emailSlot.innerHTML =
-        '<a href="mailto:' + addr + '" ' +
-        'style="font-family:var(--mono); text-decoration:underline">' +
-        addr +
-        '</a>';
-
-      emailBtn.remove();
-    });
-  }
-
-  /* -----------------------------
-     Language switch – keep hash
-  ----------------------------- */
-  document.querySelectorAll('a[data-lang-switch="true"]').forEach(link => {
-    link.addEventListener('click', (e) => {
-      const href = link.getAttribute('href') || '';
-      const hash = window.location.hash || '';
-      if (hash && !href.includes('#')) {
-        e.preventDefault();
-        window.location.href = href + hash;
-      }
-    });
-  });
-
-})();
-</script>
+      const mailto = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent

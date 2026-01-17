@@ -3,21 +3,21 @@
 
   <!-- Root (language selector) -->
   <url>
-    <loc>https://sossolinski.github.io/decisionary/</loc>
+    <loc>https://decisionary.app/</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.6</priority>
   </url>
 
   <!-- English -->
   <url>
-    <loc>https://sossolinski.github.io/decisionary/en/</loc>
+    <loc>https://decisionary.app/en/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <!-- Polish -->
   <url>
-    <loc>https://sossolinski.github.io/decisionary/pl/</loc>
+    <loc>https://decisionary.app/pl/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>

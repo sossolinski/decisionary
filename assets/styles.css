@@ -509,3 +509,141 @@ footer{
   h1{font-size:38px}
   nav{display:none}
 }
+
+/* ===== Pricing (v2) – like screenshot ===== */
+
+.pricing-grid{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap:18px;
+  align-items:stretch;
+}
+
+.card2{
+  background: rgba(255,255,255,0.72);
+  border: 1px solid rgba(11,18,32,0.10);
+  border-radius: 22px;
+  box-shadow: 0 18px 40px rgba(11,18,32,0.08);
+  backdrop-filter: blur(10px);
+  padding: 18px 18px 16px;
+  display:flex;
+  flex-direction:column;
+  min-height: 420px;
+}
+
+/* subtle “glass” variations */
+.price2.coming{
+  background: rgba(255,255,255,0.70);
+}
+.price2.roadmap{
+  background: rgba(245,246,255,0.78);
+}
+
+/* top pills */
+.price2-top{
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  gap:10px;
+  margin-bottom: 10px;
+}
+.price2-top.dual{
+  justify-content:space-between;
+}
+
+.pill{
+  display:inline-flex;
+  align-items:center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 13px;
+  border: 1px solid rgba(11,18,32,0.10);
+  background: rgba(255,255,255,0.70);
+  color: rgba(11,18,32,0.72);
+}
+
+.pill-green{
+  background: rgba(22,163,74,0.12);
+  border-color: rgba(22,163,74,0.18);
+  color: rgba(22,163,74,0.95);
+}
+.pill-amber{
+  background: rgba(245,158,11,0.16);
+  border-color: rgba(245,158,11,0.20);
+  color: rgba(180,83,9,0.95);
+}
+.pill-gray{
+  background: rgba(11,18,32,0.06);
+  border-color: rgba(11,18,32,0.10);
+  color: rgba(11,18,32,0.78);
+}
+.pill-gray-soft{
+  background: rgba(11,18,32,0.04);
+  border-color: rgba(11,18,32,0.10);
+  color: rgba(11,18,32,0.65);
+}
+
+/* text */
+.price2-name{
+  margin: 6px 0 6px;
+  font-size: 34px;
+  letter-spacing: -0.4px;
+}
+.price2-desc{
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 15.5px;
+  max-width: 46ch;
+}
+
+/* list with colored bullets */
+.price2-list{
+  margin: 0;
+  padding-left: 20px;
+  color: rgba(11,18,32,0.72);
+  font-size: 15px;
+}
+.price2-list li{ margin: 10px 0; }
+.price2.available .price2-list li::marker{ color: rgba(22,163,74,0.95); }
+.price2.coming .price2-list li::marker{ color: rgba(180,83,9,0.95); }
+.price2.roadmap .price2-list li::marker{ color: rgba(11,18,32,0.55); }
+
+/* CTA bottom pill button */
+.price2-cta{
+  margin-top:auto;
+  padding-top: 14px;
+}
+.btn2{
+  width:100%;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  height: 56px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 16px;
+  border: 1px solid rgba(11,18,32,0.12);
+  background: rgba(255,255,255,0.72);
+  color: rgba(11,18,32,0.80);
+  box-shadow: 0 16px 34px rgba(11,18,32,0.10);
+  cursor: pointer;
+  text-decoration:none;
+}
+.btn2:disabled{
+  opacity: 0.85;
+  cursor: not-allowed;
+}
+
+.btn2-green{
+  background: linear-gradient(135deg, rgba(22,163,74,0.88), rgba(34,197,94,0.72));
+  border-color: rgba(22,163,74,0.25);
+  color: white;
+}
+
+/* responsive */
+@media (max-width: 980px){
+  .pricing-grid{ grid-template-columns: 1fr; }
+  .card2{ min-height: unset; }
+}
+

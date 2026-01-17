@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta
     name="description"
-    content="Decisionary - platforma do symulacji tabletop dla lepszych decyzji. Prowadź ustrukturyzowane ćwiczenia dla zarządzania kryzysowego, reagowania awaryjnego i gotowości operacyjnej."
+    content="Decisionary – platforma symulacji tabletop wspierająca lepsze decyzje. Prowadź ustrukturyzowane ćwiczenia tabletop dla zarządzania kryzysowego, reagowania awaryjnego i gotowości operacyjnej."
   />
-  <title>Decisionary - Platforma do symulacji tabletop</title>
+  <title>Decisionary – platforma symulacji tabletop</title>
 
-  <!-- SEO (GitHub Pages / repo mode): use relative paths -->
-  <link rel="canonical" href="./" />
+  <!-- SEO -->
+  <link rel="canonical" href="../pl/" />
+  <link rel="alternate" hreflang="en" href="../" />
   <link rel="alternate" hreflang="pl" href="./" />
-  <link rel="alternate" hreflang="en" href="../en/" />
-  <link rel="alternate" hreflang="x-default" href="../en/" />
+  <link rel="alternate" hreflang="x-default" href="../" />
 
   <link rel="stylesheet" href="../assets/styles.css" />
 </head>
@@ -23,7 +23,7 @@
   <div class="topbar">
     <div class="container">
       <div class="topbar-inner">
-        <a class="brand" href="#top" aria-label="Decisionary - strona główna">
+        <a class="brand" href="#top" aria-label="Decisionary strona główna">
           <span class="logo-svg" aria-hidden="true">
             <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="24" cy="10" r="4" />
@@ -39,7 +39,7 @@
           <div>Decisionary</div>
         </a>
 
-        <nav aria-label="Nawigacja główna">
+        <nav aria-label="Primary">
           <a href="#product">Produkt</a>
           <a href="#usecases">Zastosowania</a>
           <a href="#how">Jak to działa</a>
@@ -50,11 +50,11 @@
         </nav>
 
         <div style="display:flex; align-items:center; gap:10px">
-          <div class="lang" aria-label="Język">
+          <div class="lang">
+            <a href="../" data-lang-switch="true">EN</a>
             <a class="active" href="./" aria-current="page">PL</a>
-            <a href="../en/" data-lang-switch="true">EN</a>
           </div>
-          <a class="btn primary small" href="#contact">Poproś o demo</a>
+          <a class="btn primary small" href="#contact">Umów demo</a>
         </div>
       </div>
     </div>
@@ -67,47 +67,48 @@
         <div>
           <div class="kicker">
             <span class="dot" aria-hidden="true"></span>
-            Przeglądarkowe symulacje tabletop • stworzone dla środowisk regulowanych
+            Symulacje tabletop w przeglądarce • raporty gotowe do audytu
           </div>
 
-          <h1>Platforma do symulacji tabletop dla lepszych decyzji</h1>
+          <h1>Decisionary – oprogramowanie do symulacji tabletop wspierające decyzje w kryzysie</h1>
 
           <p class="lead">
-            Prowadź ustrukturyzowane ćwiczenia tabletop, które poprawiają jakość decyzji pod presją —
-            w obszarach zarządzania kryzysowego, reagowania awaryjnego i gotowości operacyjnej.
+            Prowadź ustrukturyzowane ćwiczenia, które dokumentują decyzje, zwiększają gotowość i automatyzują raporty poćwiczebne.
           </p>
 
           <div class="hero-ctas">
-            <a class="btn primary" href="#contact">Poproś o demo</a>
+            <a class="btn primary" href="#contact">Umów demo</a>
             <a class="btn" href="#product">Zobacz jak to działa</a>
           </div>
 
           <div class="mini-benefits" aria-label="Szybkie korzyści">
             <div class="mini">
-              <strong>Buduj i prowadź scenariusze</strong>
-              <span>Twórz injecty, fazy, cele i ścieżki eskalacji w jednym miejscu.</span>
+              <strong>Spójna jakość ćwiczeń</strong>
+              <span>Powtarzalne przepływy scenariuszy dla każdego zespołu.</span>
             </div>
+
             <div class="mini">
-              <strong>Rejestruj decyzje</strong>
-              <span>Zapisuj co ustalono, przez kogo, kiedy i dlaczego — w czasie rzeczywistym.</span>
+              <strong>Koniec z ręcznym śledzeniem</strong>
+              <span>Decyzje, odpowiedzialność i uzasadnienia rejestrowane na żywo.</span>
             </div>
+
             <div class="mini">
-              <strong>Twórz AAR szybciej</strong>
-              <span>Generuj przejrzyste raporty po ćwiczeniu i działania usprawniające w kilka minut.</span>
+              <strong>Raport w kilka minut</strong>
+              <span>Automatyczne raporty poćwiczebne gotowe do audytu.</span>
             </div>
           </div>
         </div>
 
         <!-- Mock UI -->
-        <div class="mock" role="img" aria-label="Mockup: Pokój ćwiczenia na żywo (przykład)">
+        <div class="mock mock-float" role="img" aria-label="Makieta pokoju ćwiczeń na żywo (przykład)">
           <div class="mock-top">
-            <div style="display:flex; flex-direction:column; gap:6px">
-              <div class="mock mock-float" role="img" aria-label="Live Exercise Room mockup (example)">
+            <div class="mock-head">
+              <div class="mock-title">Pokój ćwiczeń na żywo</div>
               <div class="mock-sub">Podgląd przykładowy</div>
             </div>
 
             <div class="mock-badges">
-              <span class="badge">Hybrydowo</span>
+              <span class="badge">Hybrydowe</span>
               <span class="badge">RBAC</span>
               <span class="badge">AAR</span>
             </div>
@@ -124,25 +125,27 @@
               <div class="card focus">
                 <div class="focus-pill">Fokus</div>
                 <h4>Rejestr decyzji</h4>
-                <p>Właściciele, znaczniki czasu, uzasadnienie i follow-upy — na żywo.</p>
+                <p>Właściciele, znaczniki czasu, uzasadnienia i działania następcze rejestrowane na żywo.</p>
                 <div class="bar"><div style="width:52%"></div></div>
               </div>
             </div>
 
             <div class="row">
               <div class="card">
-                <h4>Kontrola facylitatora</h4>
-                <p>Wyzwalaj injecty wg harmonogramu lub na żądanie; śledź reakcje.</p>
+                <h4>Narzędzia facylitatora</h4>
+                <p>Uruchamiaj injecty zgodnie z harmonogramem lub na żądanie; śledź reakcje.</p>
                 <div class="bar"><div style="width:78%"></div></div>
               </div>
             </div>
 
             <div class="log" style="--d:0.05s">
-              [14:12] Dostarczono Inject #6 • [14:14] Zapis decyzji: eskalacja do Zespołu Kryzysowego • Właściciel: Ops Lead
+              [14:12] Inject #6 dostarczony • [14:14] Zarejestrowano decyzję: eskalacja do Zespołu Kryzysowego • Właściciel: Lider Operacji
             </div>
             <div class="log" style="--d:0.18s">
-              [14:19] Przypisano działanie: szkic komunikatu dla interesariuszy • Termin: 15:00 • Status: Otwarte
+              [14:19] Przypisano działanie: przygotować aktualizację dla interesariuszy • Termin: 15:00 • Status: Otwarte
             </div>
+
+            <div class="mock-note">Przykładowe injecty i decyzje – wyłącznie do celów ilustracyjnych.</div>
           </div>
         </div>
       </div>
@@ -152,14 +155,40 @@
   <!-- Problem -->
   <section aria-label="Problem">
     <div class="container">
-      <h2 class="section-title">Ćwiczenia tabletop trudno powtarzać — i trudno je mierzyć</h2>
+      <h2 class="section-title">Ćwiczenia tabletop trudno powtarzać – i trudno je mierzyć</h2>
       <p class="section-lead">
-        Wiele organizacji nadal prowadzi ćwiczenia na slajdach, czatach i ręcznych notatkach.
-        Efekt: niespójna facylitacja, brak pełnego śladu decyzji i raporty, które powstają przez wiele dni.
+        Wiele organizacji nadal prowadzi ćwiczenia w oparciu o prezentacje, wiadomości na czacie i ręczne notatki.<br />
+        Efekt to niespójna facylitacja, brak śladu decyzyjnego oraz raporty, których przygotowanie zajmuje dni.
       </p>
+
       <div class="panel">
-        Decisionary zamienia tabletop w ustrukturyzowany, powtarzalny workflow —
-        z rejestracją decyzji w czasie rzeczywistym i wbudowanym raportowaniem.
+        <div class="grid-2">
+          <div>
+            <strong>Bez Decisionary</strong>
+            <p style="margin:10px 0 12px; color: var(--muted);">
+              Ćwiczenia się odbywają, ale dowody i wnioski „giną”.
+            </p>
+            <ul style="margin:0; padding-left:18px; color: var(--muted);">
+              <li>Prezentacje + wątki czatów + ręczne notatki</li>
+              <li>Decyzje zapisywane niespójnie (albo wcale)</li>
+              <li>Brak jasnej odpowiedzialności, znaczników czasu i uzasadnień</li>
+              <li>Raporty poćwiczebne powstają przez wiele dni</li>
+            </ul>
+          </div>
+
+          <div>
+            <strong>Z Decisionary</strong>
+            <p style="margin:10px 0 12px; color: var(--muted);">
+              Ustrukturyzowany przebieg – od scenariusza do raportu gotowego do audytu.
+            </p>
+            <ul style="margin:0; padding-left:18px; color: var(--muted);">
+              <li>Scenariusze wielokrotnego użytku i spójna facylitacja</li>
+              <li>Rejestr decyzji i działań w czasie rzeczywistym</li>
+              <li>Jasna odpowiedzialność, znaczniki czasu i uzasadnienia</li>
+              <li>Raporty poćwiczebne generowane w kilka minut</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -167,47 +196,53 @@
   <!-- Product -->
   <section id="product" aria-label="Produkt">
     <div class="container">
-      <h2 class="section-title">Jedna przestrzeń robocza do treningu decyzyjnego w oparciu o scenariusze</h2>
+      <h2 class="section-title">Jedno środowisko do treningu decyzji w oparciu o scenariusze</h2>
       <p class="section-lead">
-        Decisionary to przeglądarkowa platforma do projektowania, prowadzenia i oceny ćwiczeń tabletop —
-        dla zespołów, które potrzebują powtarzalnej gotowości i wyników przyjaznych audytowi.
+        Decisionary to platforma działająca w przeglądarce do projektowania, prowadzenia i oceny ćwiczeń tabletop –
+        stworzona dla zespołów, które potrzebują powtarzalnej gotowości i wyników przyjaznych audytowi.
       </p>
 
       <div class="grid-3">
         <div class="feature">
           <div class="icon" aria-hidden="true">🧩</div>
           <h3>Kreator scenariuszy</h3>
-          <p>Twórz ustrukturyzowane scenariusze z fazami, injectami, celami i ścieżkami eskalacji — wielokrotnego użycia.</p>
+          <p>Twórz ustrukturyzowane scenariusze z fazami, injectami, celami i ścieżkami eskalacji – do ponownego wykorzystania w zespołach.</p>
         </div>
 
         <div class="feature">
           <div class="icon" aria-hidden="true">⏱️</div>
           <h3>Oś czasu injectów</h3>
-          <p>Dostarczaj injecty wg harmonogramu lub na żądanie. Utrzymuj spójność czasu i przebiegu między ćwiczeniami.</p>
+          <p>Dostarczaj injecty zgodnie z harmonogramem lub na żądanie. Zachowuj śledzalność i spójne tempo między ćwiczeniami.</p>
         </div>
 
         <div class="feature">
           <div class="icon" aria-hidden="true">🧾</div>
           <h3>Rejestr decyzji i działań</h3>
-          <p>Rejestruj decyzje, właścicieli, znaczniki czasu i uzasadnienia — plus działania i terminy.</p>
+          <p>Rejestruj decyzje, właścicieli, znaczniki czasu i uzasadnienia na żywo – plus działania następcze i terminy.</p>
         </div>
 
         <div class="feature">
           <div class="icon" aria-hidden="true">👥</div>
           <h3>Udział oparty o role</h3>
-          <p>Oddzielne widoki dla facylitatorów, uczestników, obserwatorów i ewaluatorów. Kontrola dostępu RBAC.</p>
+          <p>Oddzielne widoki dla facylitatorów, uczestników, obserwatorów i ewaluatorów. Kontroluj dostęp dzięki RBAC.</p>
         </div>
 
-        <div class="feature">
+        <div class="feature feature-soon">
           <div class="icon" aria-hidden="true">📣</div>
-          <h3>Komunikacja kryzysowa (opcjonalnie)</h3>
-          <p>Symuluj presję mediów i interesariuszy, komunikację wewnętrzną oraz spójność przekazu z decyzjami operacyjnymi.</p>
+          <h3>
+            Komunikacja kryzysowa
+            <span class="badge-soon">Wkrótce</span>
+          </h3>
+          <p>
+            Trening komunikacji kryzysowej w oparciu o scenariusz –
+            presja medialna, aktualizacje dla interesariuszy i spójność komunikatów wewnętrznych.
+          </p>
         </div>
 
         <div class="feature">
           <div class="icon" aria-hidden="true">📄</div>
-          <h3>Raport po ćwiczeniu (AAR)</h3>
-          <p>Generuj AAR z osią czasu, decyzjami, lukami i działaniami usprawniającymi — gotowy do przeglądu zarządczego.</p>
+          <h3>Raport poćwiczebny (AAR)</h3>
+          <p>Generuj AAR z osią czasu, decyzjami, lukami i działaniami usprawniającymi – gotowy do przeglądu zarządczego.</p>
         </div>
       </div>
     </div>
@@ -216,9 +251,9 @@
   <!-- Use cases -->
   <section id="usecases" aria-label="Zastosowania">
     <div class="container">
-      <h2 class="section-title">Zaprojektowane dla realnej gotowości</h2>
+      <h2 class="section-title">Zaprojektowane pod realną gotowość operacyjną</h2>
       <p class="section-lead">
-        Decisionary wspiera ćwiczenia decyzyjne w środowiskach regulowanych —
+        Decisionary wspiera ćwiczenia decyzyjne w obszarze kryzysowym i operacyjnym w środowiskach regulowanych –
         od lotnictwa i transportu po infrastrukturę krytyczną i sektor publiczny.
       </p>
 
@@ -226,28 +261,28 @@
         <div class="panel">
           <h3 style="margin:0 0 10px">Ćwiczenia zarządzania kryzysowego i ERP</h3>
           <p style="margin:0; color:var(--muted)">
-            Trenuj koordynację, eskalację i decyzje w pierwszych krytycznych godzinach — ze spójną facylitacją i dowodami.
+            Trenuj koordynację, eskalację i decyzje w pierwszych krytycznych godzinach – ze spójną facylitacją i dowodami.
           </p>
         </div>
 
         <div class="panel">
           <h3 style="margin:0 0 10px">Trening reagowania awaryjnego</h3>
           <p style="margin:0; color:var(--muted)">
-            Ćwicz role, odpowiedzialności i przepływ informacji pod presją czasu — wraz z uzasadnieniem i właścicielami decyzji.
+            Przećwicz role, odpowiedzialności i przepływ informacji pod presją czasu – z uzasadnieniami i właścicielami decyzji.
           </p>
         </div>
 
         <div class="panel">
           <h3 style="margin:0 0 10px">Symulacje zakłóceń operacyjnych</h3>
           <p style="margin:0; color:var(--muted)">
-            Modeluj zakłócenia i testuj reakcje ciągłości działania z realistycznymi injectami, równoległymi wątkami i kontrolowaną eskalacją.
+            Modeluj zakłócenia i testuj reakcje ciągłościowe z realistycznymi injectami, równoległymi strumieniami pracy i kontrolowaną eskalacją.
           </p>
         </div>
 
         <div class="panel">
-          <h3 style="margin:0 0 10px">Trening decyzyjny dla liderów</h3>
+          <h3 style="margin:0 0 10px">Trening decyzyjny liderów</h3>
           <p style="margin:0; color:var(--muted)">
-            Poprawiaj jakość decyzji, ład organizacyjny i koordynację — oraz porównuj wyniki w powtarzalnych cyklach ćwiczeń.
+            Popraw jakość decyzji, ład organizacyjny i koordynację – oraz śledź wyniki w powtarzalnych cyklach ćwiczeń.
           </p>
         </div>
       </div>
@@ -257,9 +292,9 @@
   <!-- How it works -->
   <section id="how" aria-label="Jak to działa">
     <div class="container">
-      <h2 class="section-title">Od scenariusza do raportu — w jednej platformie</h2>
+      <h2 class="section-title">Od scenariusza do raportu – w jednej platformie</h2>
       <p class="section-lead">
-        Prosty, powtarzalny workflow dla ćwiczeń tabletop — zaprojektowany do facylitacji hybrydowej i zdalnej.
+        Prosty, powtarzalny przebieg ćwiczeń tabletop – zaprojektowany dla facylitacji hybrydowej i zdalnej.
       </p>
 
       <div class="timeline">
@@ -284,14 +319,17 @@
               </div>
 
               <div class="timeline-title">
-                <h3>Stwórz scenariusz</h3>
+                <h3>Utwórz scenariusz</h3>
                 <div class="timeline-badges">
                   <span class="t-badge">Facylitator</span>
                 </div>
               </div>
             </div>
 
-            <p>Zdefiniuj cele, role, injecty i punkty decyzyjne — wykorzystuj i udoskonalaj w kolejnych sesjach.</p>
+            <p>
+              Zdefiniuj cele, role, injecty i punkty decyzyjne –
+              tworząc powtarzalną strukturę scenariusza, którą można wykorzystywać i doskonalić w czasie.
+            </p>
           </div>
         </div>
 
@@ -321,7 +359,7 @@
               </div>
 
               <div class="timeline-title">
-                <h3>Przeprowadź ćwiczenie</h3>
+                <h3>Przeprowadź ćwiczenie tabletop</h3>
                 <div class="timeline-badges">
                   <span class="t-badge">Facylitator</span>
                   <span class="t-badge">Uczestnicy</span>
@@ -329,7 +367,10 @@
               </div>
             </div>
 
-            <p>Prowadź na żywo lub zdalnie. Wyzwalaj injecty, zarządzaj czasem i śledź aktywność uczestników.</p>
+            <p>
+              Prowadź ćwiczenia na żywo, zdalnie lub hybrydowo –
+              utrzymując spójne tempo, dostarczanie injectów i zaangażowanie uczestników między sesjami.
+            </p>
           </div>
         </div>
 
@@ -373,7 +414,10 @@
               </div>
             </div>
 
-            <p>Zapisuj co ustalono, przez kogo, kiedy i dlaczego — oraz działania i follow-upy.</p>
+            <p>
+              Rejestruj decyzje, odpowiedzialność, znaczniki czasu i uzasadnienia w trakcie –
+              eliminując odtwarzanie przebiegu i domysły po ćwiczeniu.
+            </p>
           </div>
         </div>
 
@@ -429,7 +473,10 @@
               </div>
             </div>
 
-            <p>Wyeksportuj ustrukturyzowany raport po ćwiczeniu i śledź działania usprawniające z odpowiedzialnością.</p>
+            <p>
+              Wygeneruj ustrukturyzowany raport poćwiczebny z osią czasu,
+              decyzjami, lukami i działaniami następczymi – gotowy do przeglądu i rozliczalności.
+            </p>
           </div>
         </div>
       </div>
@@ -439,18 +486,48 @@
   <!-- Outcomes -->
   <section aria-label="Rezultaty">
     <div class="container">
-      <h2 class="section-title">Rezultaty po każdym ćwiczeniu</h2>
+      <h2 class="section-title">Co zostaje po każdym ćwiczeniu</h2>
       <p class="section-lead">
-        Decisionary sprawia, że ćwiczenia są mierzalne — i zamienia sesje w konkretne działania usprawniające.
+        Decisionary zamienia sesje tabletop w konkretne, możliwe do przeglądu rezultaty –
+        gotowe do dyskusji zarządczej, audytów i działań następczych.
       </p>
 
       <div class="bullets">
-        <div class="bullet"><div class="check" aria-hidden="true">✓</div><p>Przejrzysta oś czasu zdarzeń i injectów</p></div>
-        <div class="bullet"><div class="check" aria-hidden="true">✓</div><p>Kompletny rejestr decyzji i właścicieli</p></div>
-        <div class="bullet"><div class="check" aria-hidden="true">✓</div><p>Zidentyfikowane luki w procedurach, szkoleniach i koordynacji</p></div>
-        <div class="bullet"><div class="check" aria-hidden="true">✓</div><p>Działania usprawniające z terminami i odpowiedzialnością</p></div>
-        <div class="bullet"><div class="check" aria-hidden="true">✓</div><p>Szybsze raportowanie dla zarządu, audytów i regulatorów</p></div>
-        <div class="bullet"><div class="check" aria-hidden="true">✓</div><p>Lepsza gotowość — bez ryzyka w świecie rzeczywistym</p></div>
+        <div class="bullet">
+          <div class="check" aria-hidden="true">✓</div>
+          <p><strong>Kompletna oś czasu ćwiczenia</strong><br />
+          Injecty, decyzje i działania zapisane chronologicznie.</p>
+        </div>
+
+        <div class="bullet">
+          <div class="check" aria-hidden="true">✓</div>
+          <p><strong>Udokumentowane decyzje i odpowiedzialność</strong><br />
+          Kto podjął jaką decyzję, kiedy i dlaczego – z jasną rozliczalnością.</p>
+        </div>
+
+        <div class="bullet">
+          <div class="check" aria-hidden="true">✓</div>
+          <p><strong>Zidentyfikowane luki proceduralne i koordynacyjne</strong><br />
+          Wnioski oparte o dowody zamiast subiektywnych wrażeń.</p>
+        </div>
+
+        <div class="bullet">
+          <div class="check" aria-hidden="true">✓</div>
+          <p><strong>Plan usprawnień możliwy do realizacji</strong><br />
+          Działania następcze z właścicielami i terminami.</p>
+        </div>
+
+        <div class="bullet">
+          <div class="check" aria-hidden="true">✓</div>
+          <p><strong>Raport poćwiczebny gotowy do audytu</strong><br />
+          Ustrukturyzowany wynik gotowy dla zarządu, audytorów lub regulatorów.</p>
+        </div>
+
+        <div class="bullet">
+          <div class="check" aria-hidden="true">✓</div>
+          <p><strong>Porównywalne wyniki między ćwiczeniami</strong><br />
+          Śledź postęp i dojrzałość w czasie – nie tylko jednorazowe sesje.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -458,30 +535,35 @@
   <!-- Security -->
   <section id="security" aria-label="Bezpieczeństwo">
     <div class="container">
-      <h2 class="section-title">Zaprojektowane dla środowisk regulowanych</h2>
+      <h2 class="section-title">Zaprojektowane dla kontrolowanych ćwiczeń tabletop</h2>
       <p class="section-lead">
-        Decisionary budujemy z myślą o audytowalności i kontroli dostępu. Dodaj szczegóły techniczne/bezpieczeństwa w miarę wdrożenia.
+        Decisionary wspiera śledzalność, jasne role i możliwe do przeglądu rezultaty.<br />
+        Szczegóły bezpieczeństwa i dostępu mogą zostać dopasowane do organizacji podczas pilota i wdrożenia.
       </p>
 
       <div class="grid-3">
         <div class="feature">
           <div class="icon" aria-hidden="true">🔐</div>
-          <h3>Dostęp oparty o role</h3>
-          <p>Oddzielne role dla facylitatorów, uczestników, obserwatorów i ewaluatorów — z kontrolą uprawnień.</p>
+          <h3>Udział oparty o role</h3>
+          <p>Oddzielne widoki facylitatora, uczestnika i obserwatora. Uprawnienia mogą być dopasowane wraz ze skalą.</p>
         </div>
 
         <div class="feature">
           <div class="icon" aria-hidden="true">🧱</div>
-          <h3>Ślad audytowy</h3>
-          <p>Centralna historia ćwiczeń: injecty, decyzje, znaczniki czasu i działania — gotowe do przeglądu.</p>
+          <h3>Śledzalna historia ćwiczeń</h3>
+          <p>Decyzje, działania i znaczniki czasu w jednym miejscu – łatwiej przeglądać i raportować.</p>
         </div>
 
         <div class="feature">
           <div class="icon" aria-hidden="true">☁️</div>
-          <h3>SaaS w chmurze</h3>
-          <p>Bez instalacji. Szybki start i skalowanie w wielu zespołach — idealne dla ćwiczeń hybrydowych.</p>
+          <h3>Dostęp w przeglądarce</h3>
+          <p>Bez instalacji po stronie uczestników. Odpowiednie dla sesji zdalnych i hybrydowych.</p>
         </div>
       </div>
+
+      <p class="fine" style="margin-top:14px">
+        Planowane: SSO, zaawansowane opcje bezpieczeństwa oraz niestandardowe ustawienia retencji – dostępne wraz z dojrzewaniem produktu.
+      </p>
     </div>
   </section>
 
@@ -490,7 +572,8 @@
     <div class="container">
       <h2 class="section-title">Prosty, skalowalny cennik</h2>
       <p class="section-lead">
-        Wybierz plan w zależności od dojrzałości ćwiczeń i potrzeb organizacji.
+        Decisionary jest obecnie dostępne w ramach wczesnego dostępu.
+        Zacznij od funkcji podstawowych już dziś i skaluj, gdy pojawią się bardziej zaawansowane możliwości.
       </p>
 
       <div class="pricing-grid">
@@ -501,13 +584,13 @@
           </div>
 
           <h3 class="price2-name">Free</h3>
-          <p class="price2-desc">Wszystkie kluczowe funkcje dostępne w early access.</p>
+          <p class="price2-desc">Wszystkie funkcje podstawowe dostępne w ramach wczesnego dostępu.</p>
 
           <ul class="price2-list">
             <li>Kreator scenariuszy</li>
-            <li>Pokój ćwiczenia</li>
+            <li>Pokój ćwiczeń</li>
             <li>Rejestr decyzji i działań</li>
-            <li>Podstawowy raport AAR</li>
+            <li>Podstawowy raport poćwiczebny (AAR)</li>
           </ul>
 
           <div class="price2-cta">
@@ -523,7 +606,7 @@
 
           <h3 class="price2-name">Standard</h3>
           <p class="price2-desc">
-            Dla organizacji prowadzących regularne ćwiczenia i programy szkoleniowe.
+            Planowane dla organizacji prowadzących regularne ćwiczenia i programy szkoleń wewnętrznych.
           </p>
 
           <ul class="price2-list">
@@ -534,7 +617,7 @@
           </ul>
 
           <div class="price2-cta">
-            <button class="btn2 btn2-gray" type="button" disabled>Dostępne wkrótce</button>
+            <button class="btn2 btn2-gray" type="button" disabled>Wkrótce dostępne</button>
           </div>
         </article>
 
@@ -542,25 +625,41 @@
         <article class="price2 card2 roadmap">
           <div class="price2-top dual">
             <span class="pill pill-gray">Planowane</span>
-            <span class="pill pill-gray-soft">Dalszy roadmap</span>
+            <span class="pill pill-gray-soft">Mapa rozwoju</span>
           </div>
 
           <h3 class="price2-name">Professional</h3>
           <p class="price2-desc">
-            W kolejnych etapach Decisionary będzie wspierać duże organizacje, złożone programy szkoleniowe i środowiska regulowane.
+            Na późniejszych etapach Decisionary będzie wspierać duże organizacje, złożone programy szkoleniowe i środowiska regulowane.
           </p>
 
           <ul class="price2-list">
-            <li>Obsługa wielu organizacji i zespołów</li>
+            <li>Obsługa wielu organizacji i wielu zespołów</li>
             <li>SSO i zaawansowane bezpieczeństwo</li>
-            <li>Raportowanie i analityka</li>
-            <li>Dedykowany onboarding i priorytetowe wsparcie</li>
+            <li>Niestandardowe raportowanie i analityka</li>
+            <li>Dedykowany onboarding i wsparcie priorytetowe</li>
           </ul>
 
           <div class="price2-cta">
             <button class="btn2 btn2-gray" type="button" disabled>Planowane w kolejnych wydaniach</button>
           </div>
         </article>
+      </div>
+
+      <div class="panel support-panel" style="margin-top:28px; max-width:720px;">
+        <div class="support-content">
+          <h3 style="margin:0 0 8px">Wesprzyj rozwój projektu</h3>
+          <p class="fine" style="margin:0">
+            Decisionary to projekt na wczesnym etapie. Jeśli uważasz, że jest przydatny i chcesz wesprzeć dalszy rozwój,
+            możesz postawić mi kawę – to pomaga pokryć hosting i czas developmentu.
+          </p>
+        </div>
+
+        <div class="support-cta">
+          <a href="https://buycoffee.to/decisionary" target="_blank" class="btn">
+            ☕ Postaw mi kawę
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -574,23 +673,23 @@
       <div class="faq">
         <details>
           <summary>Czy Decisionary jest tylko dla lotnictwa?</summary>
-          <p>Nie. Lotnictwo to mocny przykład, ale Decisionary jest projektowane dla każdej organizacji, która potrzebuje ustrukturyzowanych ćwiczeń tabletop i treningu decyzyjnego w środowiskach regulowanych.</p>
+          <p>Nie. Lotnictwo to bardzo mocny przypadek użycia, ale Decisionary jest zaprojektowane dla każdej organizacji, która potrzebuje ustrukturyzowanych ćwiczeń tabletop i treningu decyzyjnego w środowiskach regulowanych.</p>
         </details>
         <details>
           <summary>Czy możemy prowadzić ćwiczenia zdalnie lub hybrydowo?</summary>
-          <p>Tak. Decisionary działa w przeglądarce i wspiera ćwiczenia tabletop w formule hybrydowej i zdalnej.</p>
+          <p>Tak. Decisionary działa w przeglądarce i wspiera ćwiczenia tabletop prowadzone zdalnie oraz hybrydowo.</p>
         </details>
         <details>
-          <summary>Czy potrzebujemy skomplikowanego wdrożenia IT?</summary>
-          <p>Nie. Możesz zacząć szybko przy minimalnym zaangażowaniu IT. Wraz ze skalą możesz dodać funkcje enterprise, takie jak SSO i zaawansowane bezpieczeństwo.</p>
+          <summary>Czy potrzebujemy złożonego wdrożenia IT?</summary>
+          <p>Nie. Możesz zacząć szybko przy minimalnym zaangażowaniu IT. Wraz ze skalą możesz dodawać funkcje enterprise, takie jak SSO i zaawansowane opcje bezpieczeństwa.</p>
         </details>
         <details>
           <summary>Czy możemy dopasować scenariusze do naszej organizacji?</summary>
-          <p>Tak. Scenariusze są w pełni konfigurowalne — role, injecty, punkty decyzyjne, ścieżki eskalacji i wyniki raportowe.</p>
+          <p>Tak. Scenariusze są w pełni konfigurowalne – role, injecty, punkty decyzyjne, ścieżki eskalacji i wyniki raportowania.</p>
         </details>
         <details>
           <summary>Czy wspiera trening komunikacji kryzysowej?</summary>
-          <p>Tak. Opcjonalny moduł może symulować presję mediów i interesariuszy, aktualizacje wewnętrzne oraz spójność przekazu z decyzjami operacyjnymi.</p>
+          <p>Tak. Opcjonalny moduł może symulować presję interesariuszy i mediów, aktualizacje wewnętrzne oraz uzgadnianie komunikatów z decyzjami operacyjnymi.</p>
         </details>
       </div>
     </div>
@@ -599,9 +698,9 @@
   <!-- Contact -->
   <section id="contact" aria-label="Kontakt">
     <div class="container">
-      <h2 class="section-title">Poproś o demo</h2>
+      <h2 class="section-title">Umów demo</h2>
       <p class="section-lead">
-        Powiedz, co chcesz symulować. Odpowiemy z dopasowanym planem demo i przykładową strukturą ćwiczenia.
+        Napisz, co chcesz zasymulować. Odpowiemy z dopasowanym zarysem demo i przykładową strukturą ćwiczenia.
       </p>
 
       <div class="contact-grid">
@@ -610,28 +709,28 @@
             <label for="name">Imię i nazwisko</label>
             <input id="name" name="name" autocomplete="name" placeholder="Twoje imię i nazwisko" required />
 
-            <label for="email">E-mail służbowy</label>
-            <input id="email" name="email" type="email" autocomplete="email" placeholder="name@company.com" required />
+            <label for="email">Służbowy e-mail</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="imie@firma.com" required />
 
             <label for="org">Organizacja</label>
             <input id="org" name="org" placeholder="Firma / instytucja" />
 
-            <label for="notes">Jakie ćwiczenia prowadzicie?</label>
+            <label for="notes">Jakiego rodzaju ćwiczenia prowadzicie?</label>
             <textarea
               id="notes"
               name="notes"
-              placeholder="ERP tabletop, zarządzanie kryzysowe, zakłócenia operacyjne, trening komunikacji..."
+              placeholder="Tabletop ERP, zarządzanie kryzysowe, zakłócenia operacyjne, trening komunikacji..."
               required
             ></textarea>
 
             <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
-              <button class="btn primary" type="submit">Wyślij prośbę</button>
+              <button class="btn primary" type="submit">Wyślij zgłoszenie</button>
               <button class="btn" type="button" id="prefill">Wypełnij przykładem</button>
             </div>
 
             <p class="fine" style="margin-top:12px">
-              Zwykle odpowiadamy w <strong>1–2 dni robocze</strong>.<br />
-              Dane wykorzystamy wyłącznie do kontaktu w sprawie demo.<br />
+              Zwykle odpowiadamy w ciągu <strong>1–2 dni roboczych</strong>.<br />
+              Twoje dane są używane wyłącznie do kontaktu w sprawie demo.<br />
             </p>
           </form>
         </div>
@@ -641,14 +740,14 @@
 
           <div class="bullets" style="grid-template-columns:1fr; margin-top:0">
             <div class="bullet"><div class="check" aria-hidden="true">✓</div><p>Przykładową strukturę scenariusza (fazy, injecty, punkty decyzyjne)</p></div>
-            <div class="bullet"><div class="check" aria-hidden="true">✓</div><p>Rekomendowane role i przebieg facylitacji dla Twojej konfiguracji</p></div>
-            <div class="bullet"><div class="check" aria-hidden="true">✓</div><p>Przykładowy układ raportu AAR</p></div>
-            <div class="bullet"><div class="check" aria-hidden="true">✓</div><p>Sugerowane kolejne kroki do pilotażu</p></div>
+            <div class="bullet"><div class="check" aria-hidden="true">✓</div><p>Rekomendowane role i przebieg facylitacji dopasowane do Twojej konfiguracji</p></div>
+            <div class="bullet"><div class="check" aria-hidden="true">✓</div><p>Przykładowy zarys raportu poćwiczebnego (AAR)</p></div>
+            <div class="bullet"><div class="check" aria-hidden="true">✓</div><p>Sugerowane kolejne kroki dla ćwiczenia pilotażowego</p></div>
           </div>
 
           <div style="margin-top:14px; border-top:1px solid rgba(11,18,32,0.10); padding-top:14px">
             <p class="fine" style="margin-top:12px">
-              Wolisz e-mail? Kliknij przycisk poniżej, aby wyświetlić adres.
+              Wolisz e-mail? Kliknij przycisk poniżej, aby wyświetlić nasz adres.
             </p>
 
             <p style="margin:0; color:var(--muted)">

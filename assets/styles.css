@@ -884,3 +884,121 @@ footer{
     opacity: 1 !important;
   }
 }
+
+/* ===== Mock UI polish (spacing + clearer header) ===== */
+
+/* więcej oddechu w całym mockupie */
+.mock{
+  border-radius: 26px;
+}
+
+/* header: wyraźniejszy "Live Exercise Room" + lepszy układ */
+.mock-top{
+  padding: 18px 18px;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+/* tytuł bardziej "nagłówkowy" */
+.mock-title{
+  font-size: 16px;
+  font-weight: 850;
+  letter-spacing: -0.2px;
+  line-height: 1.1;
+}
+
+/* dodaj subtelny “LIVE” bez zmiany HTML */
+.mock-title::after{
+  content:"LIVE";
+  margin-left: 10px;
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.3px;
+  color: rgba(22,163,74,0.95);
+  border: 1px solid rgba(22,163,74,0.18);
+  background: rgba(22,163,74,0.10);
+  vertical-align: middle;
+}
+
+/* “Example preview” mniej masywne */
+.mock-sub{
+  padding: 5px 10px;
+  font-size: 11px;
+  font-weight: 850;
+  opacity: 0.95;
+}
+
+/* badges mniej "puchate" i bardziej równo */
+.mock-badges{
+  gap: 8px;
+}
+.badge{
+  padding: 5px 10px;
+  font-size: 11px;
+  font-weight: 800;
+  background: rgba(11,18,32,0.035);
+}
+
+/* body: większe odstępy */
+.mock-body{
+  padding: 18px;
+  gap: 14px;
+}
+.row{
+  gap: 12px;
+}
+
+/* cards: więcej oddechu i lepsza czytelność */
+.card{
+  padding: 14px 14px;
+  border-radius: 18px;
+  min-height: 98px;
+}
+.card h4{
+  font-size: 13.5px;
+  margin-bottom: 7px;
+}
+.card p{
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+/* progress bar trochę grubszy i czytelniejszy */
+.bar{
+  height: 11px;
+  margin-top: 12px;
+  border-radius: 999px;
+}
+.bar > div{
+  border-radius: 999px;
+}
+
+/* Focus pill mniej “krzyczące” i mniejsze */
+.focus-pill{
+  top: 12px;
+  right: 12px;
+  padding: 5px 9px;
+  font-size: 10px;
+  font-weight: 900;
+  opacity: 0.95;
+}
+
+/* logi: trochę większe, ale mniej klaustrofobiczne */
+.log{
+  padding: 13px 14px;
+  border-radius: 18px;
+  font-size: 12.5px;
+}
+
+/* mobile: zachowaj proporcje */
+@media (max-width: 720px){
+  .mock-top{ padding: 16px; }
+  .mock-body{ padding: 16px; }
+  .mock-title{ font-size: 15px; }
+  .mock-title::after{ padding: 5px 9px; font-size: 10px; }
+}
+

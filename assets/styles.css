@@ -638,7 +638,7 @@ section > .container{
 .section-lead{
   color: var(--muted);
   margin:0 0 22px;
-  max-width: 76ch;
+  max-width: 100%;
 }
 
 .panel{

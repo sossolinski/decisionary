@@ -1,136 +1,472 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Decisionary — crisis & tabletop exercise platform</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Decisionary - Tabletop simulation platform for better decisions. Run structured tabletop exercises for crisis, emergency response and operational readiness." />
+  <title>Decisionary - Tabletop Simulation Platform</title>
+  <link rel="canonical" href="https://decisionary.app/">
 
-  <meta name="description" content="Decisionary helps organizations run structured tabletop exercises, log decisions, and generate fast after-action reports." />
+  <!-- SEO (GitHub Pages / repo mode): use relative paths -->
+  <link rel="canonical" href="./" />
+  <link rel="alternate" hreflang="en" href="./" />
+  <link rel="alternate" hreflang="pl" href="../pl/" />
+  <link rel="alternate" hreflang="x-default" href="./" />
 
-  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="stylesheet" href="../assets/styles.css" />
 </head>
 
 <body>
-
-  <!-- anchor for safe scroll-to-top (sticky header aware) -->
-  <div id="top" aria-hidden="true"></div>
-
-  <!-- =====================
-       Topbar
-       ===================== -->
+  <!-- Topbar -->
   <div class="topbar">
-    <div class="container topbar-inner">
+    <div class="container">
+      <div class="topbar-inner">
+        <a class="brand" href="#top" aria-label="Decisionary home">
+          <img src="../assets/logo.svg"
+               alt="Decisionary"
+               class="logo-img" />
+          <div>Decisionary</div>
+        </a>
 
-      <a href="#top" class="brand" aria-label="Decisionary home">
-        <img src="/assets/logo.svg" alt="Decisionary logo" class="logo-img" />
-        <span>Decisionary</span>
-      </a>
+        <nav aria-label="Primary">
+          <a href="#product">Product</a>
+          <a href="#usecases">Use cases</a>
+          <a href="#how">How it works</a>
+          <a href="#security">Security</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+        </nav>
 
-      <nav>
-        <a href="#product">Product</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#contact">Contact</a>
-
-        <div class="lang">
-          <a href="/" data-lang-switch="true">PL</a>
-          <a href="/en/" class="active">EN</a>
+        <div style="display:flex; align-items:center; gap:10px">
+          <div class="lang" aria-label="Language">
+            <a class="active" href="./" aria-current="page">EN</a>
+            <a href="../pl/" data-lang-switch="true">PL</a>
+          </div>
+          <a class="btn primary small" href="#contact">Request a demo</a>
         </div>
-
-        <a href="#contact" class="btn small primary">Request demo</a>
-      </nav>
-
+      </div>
     </div>
   </div>
 
-  <!-- =====================
-       Hero
-       ===================== -->
-  <header class="hero">
-    <div class="container hero-grid">
+  <!-- Hero -->
+  <header class="hero" id="top">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="kicker"><span class="dot" aria-hidden="true"></span> Browser-based tabletop simulations • built for regulated environments</div>
+          <h1>Tabletop simulation platform for better decisions</h1>
+          <p class="lead">
+            Run structured tabletop exercises that improve decision-making under pressure -
+            across crisis management, emergency response, and operational readiness.
+          </p>
 
-      <div>
-        <h1>Run better tabletop exercises.<br/>Make better decisions.</h1>
-        <p class="muted">
-          Decisionary is a lightweight platform for crisis-management and ERP tabletop exercises —
-          from inject timelines to decision logs and after-action reports.
-        </p>
+          <div class="hero-ctas">
+            <a class="btn primary" href="#contact">Request a demo</a>
+            <a class="btn" href="#product">See how it works</a>
+          </div>
 
-        <div class="cta">
-          <a href="#contact" class="btn primary">Request demo</a>
-          <a href="#pricing" class="btn">View pricing</a>
+          <div class="mini-benefits" aria-label="Quick benefits">
+            <div class="mini">
+              <strong>Build & run scenarios</strong>
+              <span>Create injects, phases, objectives, and escalation paths in one place.</span>
+            </div>
+            <div class="mini">
+              <strong>Capture decisions</strong>
+              <span>Log what was decided, by whom, when, and why — in real time.</span>
+            </div>
+            <div class="mini">
+              <strong>Generate AARs fast</strong>
+              <span>Produce clear after-action reports and improvement actions in minutes.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mock UI -->
+        <div class="mock" role="img" aria-label="Product preview mockup">
+          <div class="mock-top">
+            <div class="mock-title">Live Exercise Room</div>
+            <div class="mock-badges">
+              <span class="badge">Hybrid</span>
+              <span class="badge">RBAC</span>
+              <span class="badge">AAR</span>
+            </div>
+          </div>
+          <div class="mock-body">
+            <div class="row">
+              <div class="card">
+                <h4>Scenario</h4>
+                <p>Operational disruption with escalating injects and decision points.</p>
+                <div class="bar"><div></div></div>
+              </div>
+              <div class="card">
+                <h4>Decision log</h4>
+                <p>Owners, timestamps, rationale, and follow-ups captured live.</p>
+                <div class="bar"><div style="width:52%"></div></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="card">
+                <h4>Facilitator controls</h4>
+                <p>Trigger injects on schedule or on-demand; track responses.</p>
+                <div class="bar"><div style="width:78%"></div></div>
+              </div>
+            </div>
+            <div class="log">[14:12] Inject #6 delivered • [14:14] Decision logged: escalate to Crisis Team • Owner: Ops Lead</div>
+            <div class="log">[14:19] Action assigned: draft stakeholder update • Due: 15:00 • Status: Open</div>
+          </div>
         </div>
       </div>
-
-      <div class="hero-card">
-        <ul>
-          <li>Scenario & inject builder</li>
-          <li>Decision and action logging</li>
-          <li>Structured After-Action Reports</li>
-          <li>Designed for ERP & BCM exercises</li>
-        </ul>
-      </div>
-
     </div>
   </header>
 
-  <!-- =====================
-       Product
-       ===================== -->
-  <section id="product">
+  <!-- Problem -->
+  <section aria-label="Problem">
     <div class="container">
-      <h2>Product</h2>
-      <p class="muted">
-        Designed for facilitators, observers and crisis teams running structured exercises.
+      <h2 class="section-title">Tabletop exercises are hard to repeat — and hard to measure</h2>
+      <p class="section-lead">
+        Many organizations still run exercises with slide decks, chat messages, and manual notes.
+        The result is inconsistent facilitation, missing decision trails, and reports that take days to compile.
       </p>
-    </div>
-  </section>
-
-  <!-- =====================
-       Pricing
-       ===================== -->
-  <section id="pricing">
-    <div class="container">
-      <h2>Simple, scalable pricing</h2>
-      <p class="muted">
-        Choose a plan based on how advanced your exercises and organizational needs are.
-      </p>
-
-      <!-- pricing cards – layout untouched, CSS next step -->
-      <div class="pricing-grid">
-        <!-- cards stay as-is for now -->
+      <div class="panel">
+        Decisionary turns tabletop exercises into a structured, repeatable workflow -
+        with real-time decision capture and reporting built in.
       </div>
     </div>
   </section>
 
-  <!-- =====================
-       Contact
-       ===================== -->
-  <section id="contact">
+  <!-- Product -->
+  <section id="product" aria-label="Product">
     <div class="container">
-      <h2>Request a demo</h2>
+      <h2 class="section-title">A single workspace for scenario-based decision training</h2>
+      <p class="section-lead">
+        Decisionary is a browser-based platform to design, run, and evaluate tabletop exercises -
+        built for teams that need repeatable readiness and audit-friendly outputs.
+      </p>
 
-      <form id="demoForm">
-        <input id="name" type="text" placeholder="Name" required />
-        <input id="email" type="email" placeholder="Work email" required />
-        <input id="org" type="text" placeholder="Organization" />
-        <textarea id="notes" placeholder="Context / goals"></textarea>
+      <div class="grid-3">
+        <div class="feature">
+          <div class="icon" aria-hidden="true">🧩</div>
+          <h3>Scenario Builder</h3>
+          <p>Create structured scenarios with phases, injects, objectives and escalation paths - reusable across teams.</p>
+        </div>
+        <div class="feature">
+          <div class="icon" aria-hidden="true">⏱️</div>
+          <h3>Inject Timeline</h3>
+          <p>Deliver injects on schedule or on-demand. Keep traceability and timing consistent between exercises.</p>
+        </div>
+        <div class="feature">
+          <div class="icon" aria-hidden="true">🧾</div>
+          <h3>Decision & Action Log</h3>
+          <p>Capture decisions, owners, timestamps and rationale live — plus follow-up actions and due dates.</p>
+        </div>
 
-        <button type="submit" class="btn primary">Send request</button>
-      </form>
+        <div class="feature">
+          <div class="icon" aria-hidden="true">👥</div>
+          <h3>Role-based Participation</h3>
+          <p>Separate views for facilitators, players, observers and evaluators. Control access with RBAC.</p>
+        </div>
+        <div class="feature">
+          <div class="icon" aria-hidden="true">📣</div>
+          <h3>Crisis Comms (optional)</h3>
+          <p>Simulate media pressure, stakeholder updates, internal comms and message alignment with operations.</p>
+        </div>
+        <div class="feature">
+          <div class="icon" aria-hidden="true">📄</div>
+          <h3>After-Action Reporting</h3>
+          <p>Generate AARs with timeline, decisions, gaps and improvement actions — ready for management review.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- =====================
-       Footer
-       ===================== -->
+  <!-- Use cases -->
+  <section id="usecases" aria-label="Use cases">
+    <div class="container">
+      <h2 class="section-title">Built for real-world readiness</h2>
+      <p class="section-lead">
+        Decisionary supports crisis and operational decision-making exercises across regulated environments —
+        from aviation and transport to critical infrastructure and public sector.
+      </p>
+
+      <div class="grid-2">
+        <div class="panel">
+          <h3 style="margin:0 0 10px">Crisis Management & ERP exercises</h3>
+          <p style="margin:0; color:var(--muted)">
+            Train how teams coordinate, escalate and decide in the first critical hours — with consistent facilitation and evidence.
+          </p>
+        </div>
+        <div class="panel">
+          <h3 style="margin:0 0 10px">Emergency Response training</h3>
+          <p style="margin:0; color:var(--muted)">
+            Practice roles, responsibilities and information flow under time pressure — including decision rationale and ownership.
+          </p>
+        </div>
+        <div class="panel">
+          <h3 style="margin:0 0 10px">Operational disruption simulations</h3>
+          <p style="margin:0; color:var(--muted)">
+            Model disruptions and test continuity responses with realistic injects, parallel workstreams and controlled escalation.
+          </p>
+        </div>
+        <div class="panel">
+          <h3 style="margin:0 0 10px">Leadership decision training</h3>
+          <p style="margin:0; color:var(--muted)">
+            Improve decision quality, governance and coordination — and track outcomes across repeatable exercise cycles.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how" aria-label="How it works">
+    <div class="container">
+      <h2 class="section-title">From scenario to report - in one platform</h2>
+      <p class="section-lead">
+        A simple, repeatable workflow for tabletop exercises - designed for hybrid and remote facilitation.
+      </p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="num">01</div>
+          <h4>Create a scenario</h4>
+          <p>Define objectives, roles, injects and decision points - reuse and refine across sessions.</p>
+        </div>
+        <div class="step">
+          <div class="num">02</div>
+          <h4>Run the tabletop</h4>
+          <p>Facilitate live or remote. Trigger injects, manage timing and track participant activity.</p>
+        </div>
+        <div class="step">
+          <div class="num">03</div>
+          <h4>Capture decisions</h4>
+          <p>Log what was decided, by whom, when, and why - plus actions and follow-ups.</p>
+        </div>
+        <div class="step">
+          <div class="num">04</div>
+          <h4>Generate the AAR</h4>
+          <p>Export a structured after-action report and track improvement actions with accountability.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Outcomes -->
+  <section aria-label="Outcomes">
+    <div class="container">
+      <h2 class="section-title">Outcomes you get after every exercise</h2>
+      <p class="section-lead">
+        Decisionary makes exercises measurable - and turns sessions into concrete improvement actions.
+      </p>
+
+      <div class="bullets">
+        <div class="bullet"><div class="check" aria-hidden="true">✓</div><p>Clear timeline of events and injects</p></div>
+        <div class="bullet"><div class="check" aria-hidden="true">✓</div><p>Complete record of decisions and ownership</p></div>
+        <div class="bullet"><div class="check" aria-hidden="true">✓</div><p>Identified gaps in procedures, training and coordination</p></div>
+        <div class="bullet"><div class="check" aria-hidden="true">✓</div><p>Improvement actions with due dates and accountability</p></div>
+        <div class="bullet"><div class="check" aria-hidden="true">✓</div><p>Faster reporting for management, audits and regulators</p></div>
+        <div class="bullet"><div class="check" aria-hidden="true">✓</div><p>Better preparedness — without real-world risk</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Security -->
+  <section id="security" aria-label="Security">
+    <div class="container">
+      <h2 class="section-title">Designed for regulated environments</h2>
+      <p class="section-lead">
+        Decisionary is built with auditability and controlled access in mind. Add your specific technical/security details as you implement.
+      </p>
+
+      <div class="grid-3">
+        <div class="feature">
+          <div class="icon" aria-hidden="true">🔐</div>
+          <h3>Role-based access</h3>
+          <p>Separate roles for facilitators, players, observers and evaluators, with controlled permissions.</p>
+        </div>
+        <div class="feature">
+          <div class="icon" aria-hidden="true">🧱</div>
+          <h3>Audit trail</h3>
+          <p>Centralized exercise history: injects, decisions, timestamps and actions — ready for review.</p>
+        </div>
+        <div class="feature">
+          <div class="icon" aria-hidden="true">☁️</div>
+          <h3>Cloud-based SaaS</h3>
+          <p>No installations. Start quickly and scale across teams — ideal for hybrid exercise delivery.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" aria-label="Pricing">
+    <div class="container">
+      <h2 class="section-title">Simple, scalable pricing</h2>
+      <p class="section-lead">
+        Choose a plan based on how often you run exercises and how many teams you support.
+      </p>
+
+      <div class="pricing">
+        <div class="price-card">
+          <div class="price-top">
+            <h3>Starter</h3>
+            <span class="tag">Single team</span>
+          </div>
+          <p class="price">From <strong>€</strong> <small>/ month</small></p>
+          <ul class="list">
+            <li>Scenario Builder</li>
+            <li>Exercise Room</li>
+            <li>Decision & action log</li>
+            <li>Basic After-Action Report</li>
+          </ul>
+          <div class="spacer"></div>
+          <a class="btn" href="#contact">Talk pricing</a>
+        </div>
+
+        <div class="price-card featured">
+          <div class="price-top">
+            <h3>Professional</h3>
+            <span class="tag">Most teams</span>
+          </div>
+          <p class="price">From <strong>€</strong> <small>/ month</small></p>
+          <ul class="list">
+            <li>Everything in Starter</li>
+            <li>Roles & permissions (RBAC)</li>
+            <li>Advanced logging & exports</li>
+            <li>Improvement action tracking</li>
+          </ul>
+          <div class="spacer"></div>
+          <a class="btn primary" href="#contact">Request a demo</a>
+        </div>
+
+        <div class="price-card">
+          <div class="price-top">
+            <h3>Enterprise</h3>
+            <span class="tag">Regulated orgs</span>
+          </div>
+          <p class="price">Custom <small>/ year</small></p>
+          <ul class="list">
+            <li>SSO & advanced security</li>
+            <li>Custom reporting</li>
+            <li>Dedicated onboarding</li>
+            <li>Priority support</li>
+          </ul>
+          <div class="spacer"></div>
+          <a class="btn" href="#contact">Contact sales</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" aria-label="FAQ">
+    <div class="container">
+      <h2 class="section-title">FAQ</h2>
+      <p class="section-lead">Quick answers to common questions.</p>
+
+      <div class="faq">
+        <details>
+          <summary>Is Decisionary only for aviation?</summary>
+          <p>No. Aviation is a strong use case, but Decisionary is designed for any organization that needs structured tabletop exercises and decision training across regulated environments.</p>
+        </details>
+        <details>
+          <summary>Can we run exercises remotely or hybrid?</summary>
+          <p>Yes. Decisionary is browser-based and supports hybrid and remote tabletop exercises.</p>
+        </details>
+        <details>
+          <summary>Do we need a complex IT implementation?</summary>
+          <p>No. You can start quickly with minimal IT effort. As you scale, you can add enterprise features such as SSO and advanced security.</p>
+        </details>
+        <details>
+          <summary>Can we tailor scenarios to our organization?</summary>
+          <p>Yes. Scenarios are fully configurable — roles, injects, decision points, escalation paths, and reporting outputs.</p>
+        </details>
+        <details>
+          <summary>Does it support crisis communications training?</summary>
+          <p>Yes. An optional module can simulate stakeholder and media pressure, internal updates, and message alignment with operational decisions.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" aria-label="Contact">
+    <div class="container">
+      <h2 class="section-title">Request a demo</h2>
+      <p class="section-lead">
+        Tell us what you want to simulate. We’ll respond with a tailored demo outline and example exercise structure.
+      </p>
+
+      <div class="contact-grid">
+        <div class="panel">
+          <form id="demoForm">
+            <label for="name">Name</label>
+            <input id="name" name="name" autocomplete="name" placeholder="Your name" required />
+
+            <label for="email">Work email</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="name@company.com" required />
+
+            <label for="org">Organization</label>
+            <input id="org" name="org" placeholder="Company / agency" />
+
+            <label for="notes">What kind of exercises do you run?</label>
+            <textarea id="notes" name="notes" placeholder="ERP tabletop, crisis management, operational disruption, comms training..." required></textarea>
+
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
+              <button class="btn primary" type="submit">Send request</button>
+              <button class="btn" type="button" id="prefill">Prefill example</button>
+            </div>
+            <p class="fine" style="margin-top:12px">
+  We typically respond within <strong>1–2 business days</strong>.<br>
+  Your details are used only to contact you about the demo.<br>
+  Prefer email? Click the button above to reveal our address.
+</p>
+          </form>
+        </div>
+
+        <div class="panel">
+          <h3 style="margin:0 0 12px">What you’ll get</h3>
+          <div class="bullets" style="grid-template-columns:1fr; margin-top:0">
+            <div class="bullet"><div class="check" aria-hidden="true">✓</div><p>Sample scenario structure (phases, injects, decision points)</p></div>
+            <div class="bullet"><div class="check" aria-hidden="true">✓</div><p>Recommended roles and facilitation flow for your setup</p></div>
+            <div class="bullet"><div class="check" aria-hidden="true">✓</div><p>Example After-Action Report outline</p></div>
+            <div class="bullet"><div class="check" aria-hidden="true">✓</div><p>Suggested next steps for a pilot exercise</p></div>
+          </div>
+
+          <div style="margin-top:14px; border-top:1px solid rgba(11,18,32,0.10); padding-top:14px">
+            <p style="margin:0; color:var(--muted)">
+              <button type="button"
+                      class="btn"
+                      id="emailBtn"
+                      aria-label="Reveal email address">
+                      ✉️ Prefer email?
+                      </button>
+                <span id="emailSlot" class="fine" style="margin-left:10px"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
     <div class="container">
-      <p>
-        © <span id="year"></span> Decisionary
-      </p>
+      <div class="foot">
+        <div>© <span id="year"></span>2026 Decisionary.app </div>
+        <div class="links">
+          <a href="#security">Security</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
     </div>
   </footer>
 
-  <script src="/assets/app.js" defer></script>
+  <!-- Floating back-to-top button -->
+  <button class="to-top" id="toTop" type="button" aria-label="Back to top">↑</button>
+
+  <script src="../assets/app.js" defer></script>
 </body>
 </html>

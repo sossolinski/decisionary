@@ -1223,3 +1223,34 @@ footer{
   .mock-body{ padding: 16px; }
   .mock-title{ font-size: 15px; }
 }
+
+
+/* Feature – coming soon */
+.feature-soon{
+  opacity: 0.65;
+  filter: saturate(0.85);
+  pointer-events: none;
+}
+
+.feature-soon:hover{
+  transform: none !important;
+  box-shadow: 0 14px 28px rgba(11,18,32,0.06);
+}
+
+.feature-soon h3{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.badge-soon{
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(124,58,237,0.12);
+  color: rgba(124,58,237,0.95);
+  border: 1px solid rgba(124,58,237,0.25);
+  white-space: nowrap;
+}
+

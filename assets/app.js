@@ -69,6 +69,32 @@
     });
   }
 
+
+<script>
+  (function () {
+    const btn = document.getElementById('emailBtn');
+    const slot = document.getElementById('emailSlot');
+    if (!btn || !slot) return;
+
+    btn.addEventListener('click', () => {
+      const u = 'hello';
+      const d = 'decisionary.app';
+      const a = u + '@' + d;
+
+      slot.innerHTML =
+        '<a href="mailto:' + a + '" style="font-family:var(--mono)">' +
+        a +
+        '</a>';
+
+      btn.remove();
+    });
+  })();
+</script>
+
+
+
+
+  
   // Language switch: keep hash (section) when switching language pages
   document.querySelectorAll('a[data-lang-switch="true"]').forEach(link => {
     link.addEventListener('click', (e) => {

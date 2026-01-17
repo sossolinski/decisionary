@@ -325,17 +325,21 @@ h1{
 
 /* =========================================================
    6A) Hero mock – shifted right + floating (enterprise-safe)
+   (uses top animation to avoid transform conflicts inside mock)
    ========================================================= */
 
-.hero{ overflow: visible; }
-.hero-grid{ overflow: visible; }
+@media (min-width: 981px){
+  .hero{ overflow: visible; }
+  .hero-grid{ overflow: visible; }
+}
 
 /* The "floating" hero mock */
 .mock.mock-float{
   position: relative;
   z-index: 2;
+  top: 0;
 
-  /* subtle shift to the right + slightly up (matches your concept) */
+  /* subtle shift to the right + slight baseline */
   transform: translateX(56px) translateY(6px);
 
   /* allow it to feel like it "breaks the grid" a bit */
@@ -364,14 +368,14 @@ h1{
 /* optional micro-motion (very subtle, enterprise-safe) */
 @media (hover:hover){
   .mock.mock-float{
+    will-change: top;
     animation: heroFloat 7.5s ease-in-out 0.2s infinite;
-    will-change: transform;
   }
 }
 
 @keyframes heroFloat{
-  0%, 100% { transform: translateX(56px) translateY(6px); }
-  50%      { transform: translateX(56px) translateY(0px); }
+  0%, 100% { top: 0px; }
+  50%      { top: -6px; }
 }
 
 /* Respect reduced motion */
@@ -382,8 +386,10 @@ h1{
 /* Responsive: turn off "break the grid" on smaller screens */
 @media (max-width: 980px){
   .mock.mock-float{
+    top: 0;
     transform: none;
     margin-right: 0;
+    animation: none !important;
   }
   .mock.mock-float::before{
     inset: -18px -12px -24px -12px;

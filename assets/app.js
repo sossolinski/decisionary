@@ -23,34 +23,82 @@
   if (year) year.textContent = new Date().getFullYear();
 
   /* -----------------------------
-     Demo form – fake submission (front-end only)
+     Helpers
+  ----------------------------- */
+  function getDecisionaryEmail() {
+    // Keep the address slightly harder to scrape by bots.
+    const user = ['h','e','l','l','o'].join('');
+    const domain = ['d','e','c','i','s','i','o','n','a','r','y','.','a','p','p'].join('');
+    return user + '@' + domain;
+  }
+
+  /* -----------------------------
+     Contact form – send via mailto: (no backend required)
+
+     IMPORTANT:
+     A static site cannot send emails directly from the browser without a
+     backend/service (e.g. Formspree/EmailJS/serverless function). This
+     implementation opens the user's default mail client with a prefilled
+     message.
   ----------------------------- */
   const form = document.getElementById('demoForm');
   if (form) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
 
+      // Let the browser show built-in validation UI.
+      if (typeof form.reportValidity === 'function' && !form.reportValidity()) {
+        return;
+      }
+
       const lang = document.documentElement.getAttribute('lang') || 'en';
       const btn = form.querySelector('button[type="submit"]');
       const old = btn ? btn.textContent : '';
 
+      const name = (document.getElementById('name')?.value || '').trim();
+      const email = (document.getElementById('email')?.value || '').trim();
+      const org = (document.getElementById('org')?.value || '').trim();
+      const notes = (document.getElementById('notes')?.value || '').trim();
+
+      const to = getDecisionaryEmail();
+      const subject = (lang === 'pl')
+        ? `Prośba o demo Decisionary${org ? ' — ' + org : ''}`
+        : `Decisionary demo request${org ? ' — ' + org : ''}`;
+
+      const bodyLines = [
+        (lang === 'pl') ? 'Dzień dobry,' : 'Hello,' ,
+        '',
+        (lang === 'pl') ? 'Chciał(a)bym poprosić o demo. Szczegóły:' : 'I would like to request a demo. Details:',
+        '',
+        `Name: ${name || '-'}`,
+        `Work email: ${email || '-'}`,
+        `Organization: ${org || '-'}`,
+        '',
+        (lang === 'pl') ? 'Opis / kontekst:' : 'Notes / context:',
+        notes || '-',
+        '',
+        (lang === 'pl') ? 'Pozdrawiam,' : 'Best regards,',
+        name || ''
+      ];
+
+      const mailto = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
+
       if (btn) {
-        btn.textContent = (lang === 'pl') ? 'Wysłano ✓' : 'Sent ✓';
+        btn.textContent = (lang === 'pl') ? 'Otwieram pocztę…' : 'Opening mail…';
         btn.disabled = true;
       }
 
-      setTimeout(() => {
+      // Trigger the email client.
+      window.location.href = mailto;
+
+      // UX: restore button quickly and optionally reset the form.
+      window.setTimeout(() => {
         if (btn) {
           btn.textContent = old;
           btn.disabled = false;
         }
-        alert(
-          (lang === 'pl')
-            ? 'Zgłoszenie demo zapisane (tylko front-end). Podłącz formularz do backendu, aby odbierać zgłoszenia.'
-            : 'Demo request captured (front-end only). Connect this form to your backend to receive submissions.'
-        );
         form.reset();
-      }, 700);
+      }, 600);
     });
   }
 
@@ -94,9 +142,7 @@
 
   if (emailBtn && emailSlot) {
     emailBtn.addEventListener('click', () => {
-      const user = ['h','e','l','l','o'].join('');
-      const domain = ['d','e','c','i','s','i','o','n','a','r','y','.','a','p','p'].join('');
-      const addr = user + '@' + domain;
+      const addr = getDecisionaryEmail();
 
       emailSlot.innerHTML =
         '<a href="mailto:' + addr + '" ' +

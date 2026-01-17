@@ -3,66 +3,66 @@
   /* -----------------------------
      Smooth scroll for internal links (with sticky header offset)
   ----------------------------- */
-  function getHeaderOffset() {
-    const bar = document.querySelector('.topbar');
-    if (!bar) return 0;
-    // +8px "oddechu" żeby nagłówki nie kleiły się do belki
-    return (bar.getBoundingClientRect().height || 0) + 8;
+  function getTopOffset() {
+    const topbar = document.querySelector('.topbar');
+    if (!topbar) return 0;
+    return Math.ceil(topbar.getBoundingClientRect().height) + 8;
   }
 
-  function scrollToTarget(target, behavior) {
+  function scrollToHash(hash, smooth) {
+    if (!hash || hash === '#') return;
+    const target = document.querySelector(hash);
     if (!target) return;
 
-    const offset = getHeaderOffset();
-    const rect = target.getBoundingClientRect();
-    const y = rect.top + window.pageYOffset - offset;
+    const offset = getTopOffset();
+    const y = target.getBoundingClientRect().top + window.pageYOffset - offset;
 
     window.scrollTo({
-      top: Math.max(0, Math.round(y)),
-      behavior: behavior || 'smooth'
+      top: Math.max(0, y),
+      behavior: smooth ? 'smooth' : 'auto'
     });
-  }
-
-  function handleHash(hash, behavior) {
-    if (!hash) return;
-
-    // Normalizujemy hash
-    const id = hash.startsWith('#') ? hash : ('#' + hash);
-
-    // Specjalnie obsłuż top
-    if (id === '#top') {
-      window.scrollTo({ top: 0, behavior: behavior || 'smooth' });
-      return;
-    }
-
-    const target = document.querySelector(id);
-    if (!target) return;
-    scrollToTarget(target, behavior);
   }
 
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', (e) => {
-      const href = a.getAttribute('href');
-      if (!href || href === '#') return;
+      const id = a.getAttribute('href');
+      if (!id || id === '#') return;
 
-      const target = document.querySelector(href);
-      if (!target && href !== '#top') return;
+      const target = document.querySelector(id);
+      if (!target) return;
 
       e.preventDefault();
-      handleHash(href, 'smooth');
-
-      // Aktualizujemy URL bez skakania
-      history.replaceState(null, "", href);
+      scrollToHash(id, true);
+      history.replaceState(null, "", id);
     });
   });
 
-  // Jeśli strona odpala się z hashem — przewiń z offsetem (bez animacji)
+  // If entering the page with a hash in URL
   window.addEventListener('load', () => {
-    if (window.location.hash) {
-      // małe opóźnienie, żeby sticky header miał już finalną wysokość
-      window.setTimeout(() => handleHash(window.location.hash, 'auto'), 0);
-    }
+    const hash = window.location.hash || '';
+    if (!hash) return;
+    window.setTimeout(() => scrollToHash(hash, false), 0);
   });
+
+  /* -----------------------------
+     Floating "back to top" button
+  ----------------------------- */
+  const toTop = document.getElementById('toTop');
+  if (toTop) {
+    function toggleToTop() {
+      if (window.scrollY > 400) toTop.classList.add('show');
+      else toTop.classList.remove('show');
+    }
+
+    window.addEventListener('scroll', toggleToTop, { passive: true });
+    toggleToTop();
+
+    toTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      history.replaceState(null, "", '#top');
+    });
+  }
 
   /* -----------------------------
      Footer year
@@ -82,6 +82,12 @@
 
   /* -----------------------------
      Contact form – send via mailto: (no backend required)
+
+     IMPORTANT:
+     A static site cannot send emails directly from the browser without a
+     backend/service (e.g. Formspree/EmailJS/serverless function). This
+     implementation opens the user's default mail client with a prefilled
+     message.
   ----------------------------- */
   const form = document.getElementById('demoForm');
   if (form) {

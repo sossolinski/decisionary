@@ -1254,3 +1254,42 @@ footer{
   white-space: nowrap;
 }
 
+/* Support panel (text left, button right) */
+.support-panel{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
+
+.support-panel .support-content{
+  flex: 1 1 auto;
+  min-width: 260px;
+}
+
+.support-panel .support-cta{
+  flex: 0 0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+}
+
+.support-panel .support-cta .btn{
+  white-space: nowrap; /* nie łam przycisku na 2 linie */
+}
+
+/* Mobile: stack nicely */
+@media (max-width: 720px){
+  .support-panel{
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .support-panel .support-cta{
+    justify-content: stretch;
+    width: 100%;
+  }
+  .support-panel .support-cta .btn{
+    width: 100%;
+  }
+}
+

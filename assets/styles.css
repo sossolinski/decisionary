@@ -1002,3 +1002,27 @@ footer{
   .mock-title::after{ padding: 5px 9px; font-size: 10px; }
 }
 
+/* ===== Temporary SVG logo (Decisionary mark) ===== */
+
+.logo-svg{
+  width:34px;
+  height:34px;
+  border-radius:12px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(37,99,235,0.55), transparent 55%),
+    radial-gradient(circle at 70% 60%, rgba(124,58,237,0.45), transparent 55%),
+    rgba(255,255,255,0.9);
+  border:1px solid rgba(11,18,32,0.10);
+  box-shadow: 0 10px 20px rgba(11,18,32,0.10);
+}
+
+.logo-svg svg{
+  width:22px;
+  height:22px;
+  stroke: rgba(37,99,235,0.95);
+  fill: rgba(37,99,235,0.95);
+}
+

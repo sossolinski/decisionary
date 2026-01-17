@@ -3,18 +3,20 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+
   <title>Decisionary — Tabletop Simulation Platform</title>
   <meta name="description" content="Decisionary — browser-based tabletop simulation platform for crisis, emergency response and operational readiness. Available in English and Polish." />
-  <link rel="canonical" href="https://decisionary.app/">
-  
-  <!-- SEO: language versions -->
-  <link rel="canonical" href="./" />
-  <link rel="alternate" hreflang="en" href="./en/" />
-  <link rel="alternate" hreflang="pl" href="./pl/" />
-  <link rel="alternate" hreflang="x-default" href="./en/" />
 
-  <!-- Fast redirect fallback (in case JS is disabled) -->
-  <meta http-equiv="refresh" content="0; url=./en/" />
+  <!-- Canonical (single) -->
+  <link rel="canonical" href="https://decisionary.app/" />
+
+  <!-- SEO: language versions -->
+  <link rel="alternate" hreflang="en" href="https://decisionary.app/en/" />
+  <link rel="alternate" hreflang="pl" href="https://decisionary.app/pl/" />
+  <link rel="alternate" hreflang="x-default" href="https://decisionary.app/en/" />
+
+  <!-- Optional: redirect fallback if JS disabled (keeps the page usable first) -->
+  <meta http-equiv="refresh" content="2; url=/en/" />
 
   <style>
     :root{
@@ -48,6 +50,7 @@
     }
     a:hover{transform:translateY(-1px)}
     .fine{margin-top:12px; font-size:12.5px; color:rgba(11,18,32,0.52)}
+    code{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;}
   </style>
 
   <script>
@@ -55,7 +58,10 @@
       // Preserve hash (e.g. #pricing) when redirecting
       const hash = window.location.hash || "";
       const lang = (navigator.language || "").toLowerCase();
-      const target = lang.startsWith("pl") ? "./pl/" : "./en/";
+
+      // Root-relative paths (works from custom domain consistently)
+      const target = lang.startsWith("pl") ? "/pl/" : "/en/";
+
       // Replace so the root page doesn't stay in history
       window.location.replace(target + hash);
     })();
@@ -65,10 +71,13 @@
 <body>
   <main class="card" role="main" aria-label="Decisionary language selection">
     <h1>Decisionary</h1>
-    <p>Select your language / Wybierz język. If you are not redirected automatically, use the links below.</p>
+    <p>
+      Select your language / <span lang="pl">Wybierz język</span>.
+      If you are not redirected automatically, use the links below.
+    </p>
     <div class="links">
-      <a href="./en/">English</a>
-      <a href="./pl/">Polski</a>
+      <a href="/en/">English</a>
+      <a href="/pl/" lang="pl">Polski</a>
     </div>
     <div class="fine">
       Note: This is a lightweight index page for SEO and accessibility. Main content is available under <code>/en/</code> and <code>/pl/</code>.

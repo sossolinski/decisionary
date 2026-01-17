@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Decisionary — Skeleton</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <div class="brand-name">Decisionary</div>
+          <div class="brand-sub">MVP Skeleton (local)</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="#/" class="navlink" data-route="/">Exercises</a>
+        <a href="#/room" class="navlink" data-route="/room">Room</a>
+        <button class="btn small" id="exportBtn" type="button">Export JSON</button>
+        <button class="btn small" id="resetBtn" type="button">Reset demo data</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" id="app" aria-live="polite"></main>
+
+  <footer class="container footer">
+    <div class="muted">Local-only skeleton. Data stored in your browser (localStorage).</div>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>

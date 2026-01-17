@@ -648,52 +648,59 @@ footer{
 }
 
 /* ===== Vertical timeline ===== */
+/* ===== Timeline (vertical) + icons + badges + highlight ===== */
 
 .timeline{
-  position: relative;
-  margin-top: 36px;
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
+  position:relative;
+  margin-top:36px;
+  display:flex;
+  flex-direction:column;
+  gap:26px;
 }
 
-/* vertical line */
+/* vertical axis */
 .timeline::before{
-  content: "";
-  position: absolute;
-  left: 22px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
+  content:"";
+  position:absolute;
+  left:22px;
+  top:0;
+  bottom:0;
+  width:2px;
   background: linear-gradient(
     to bottom,
-    rgba(11,18,32,0.15),
+    rgba(11,18,32,0.16),
     rgba(11,18,32,0.05)
   );
 }
 
 .timeline-item{
-  display: grid;
+  display:grid;
   grid-template-columns: 44px 1fr;
-  gap: 22px;
-  position: relative;
+  gap:22px;
+  position:relative;
 }
 
+/* number dot */
 .timeline-dot{
-  width: 44px;
-  height: 44px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.9);
-  border: 2px solid rgba(37,99,235,0.35);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-size: 14px;
+  width:44px;
+  height:44px;
+  border-radius:999px;
+  background: rgba(255,255,255,0.92);
+  border:2px solid rgba(37,99,235,0.30);
+  box-shadow: 0 14px 28px rgba(11,18,32,0.06);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:1;
+}
+.timeline-dot .num{
+  font-weight:900;
+  font-size:14px;
   color: rgba(37,99,235,0.95);
-  z-index: 1;
+  letter-spacing:0.2px;
 }
 
+/* card */
 .timeline-card{
   background: rgba(255,255,255,0.86);
   border: 1px solid rgba(11,18,32,0.10);
@@ -702,24 +709,84 @@ footer{
   box-shadow: 0 14px 28px rgba(11,18,32,0.06);
 }
 
-.timeline-card h3{
-  margin: 0 0 6px;
-  font-size: 18px;
+.timeline-head{
+  display:flex;
+  align-items:flex-start;
+  gap:14px;
+  margin-bottom:8px;
+}
+
+.timeline-icon{
+  width:42px;
+  height:42px;
+  border-radius: 14px;
+  border: 1px solid rgba(11,18,32,0.10);
+  background: rgba(11,18,32,0.03);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 auto;
+  color: rgba(37,99,235,0.95); /* default icon color */
+}
+
+.timeline-icon svg{
+  width:22px;
+  height:22px;
+  display:block;
+}
+
+.timeline-title h3{
+  margin:0 0 6px;
+  font-size:18px;
 }
 
 .timeline-card p{
-  margin: 0;
+  margin:0;
   color: var(--muted);
-  font-size: 15px;
+  font-size:15px;
 }
+
+.timeline-badges{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.t-badge{
+  display:inline-flex;
+  align-items:center;
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:800;
+  border:1px solid rgba(11,18,32,0.10);
+  background: rgba(255,255,255,0.70);
+  color: rgba(11,18,32,0.72);
+}
+
+/* highlight last step */
+.timeline-item.highlight .timeline-dot{
+  border-color: rgba(22,163,74,0.28);
+}
+.timeline-item.highlight .timeline-dot .num{
+  color: rgba(22,163,74,0.95);
+}
+.timeline-item.highlight .timeline-icon{
+  color: rgba(22,163,74,0.95);
+  background: rgba(22,163,74,0.08);
+  border-color: rgba(22,163,74,0.18);
+}
+.t-badge-outcome{
+  background: rgba(22,163,74,0.12);
+  border-color: rgba(22,163,74,0.18);
+  color: rgba(22,163,74,0.95);
+}
+
+/* OPTIONAL: give each step a different accent (subtle) */
+.timeline-item:nth-child(2) .timeline-icon{ color: rgba(124,58,237,0.95); }
+.timeline-item:nth-child(3) .timeline-icon{ color: rgba(37,99,235,0.95); }
 
 /* mobile */
 @media (max-width: 720px){
-  .timeline::before{ left: 18px; }
-  .timeline-item{ grid-template-columns: 36px 1fr; }
-  .timeline-dot{
-    width: 36px;
-    height: 36px;
-    font-size: 12px;
-  }
-}
+  .timeline::before{ left:18px; }
+  .timeline-item{

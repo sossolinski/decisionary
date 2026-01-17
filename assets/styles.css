@@ -264,7 +264,7 @@ h1{
 }
 
 /* Sections */
-section{padding:54px 0}
+section{padding:40px 0}
 .section-title{
   font-size:28px;
   letter-spacing:-0.5px;
@@ -1024,5 +1024,40 @@ footer{
   height:22px;
   stroke: rgba(37,99,235,0.95);
   fill: rgba(37,99,235,0.95);
+}
+
+/* ===== Section separation: subtle alternating backgrounds + dividers ===== */
+
+section{
+  position: relative;
+}
+
+/* co druga sekcja: delikatny "panel" */
+section:nth-of-type(even){
+  background: rgba(255,255,255,0.38);
+  border-top: 1px solid rgba(11,18,32,0.06);
+  border-bottom: 1px solid rgba(11,18,32,0.06);
+}
+
+/* lekki nowoczesny "sheen" (bardzo subtelny) */
+section:nth-of-type(even)::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(900px 260px at 20% 0%, rgba(37,99,235,0.06), transparent 55%),
+    radial-gradient(900px 260px at 80% 0%, rgba(124,58,237,0.05), transparent 55%);
+}
+
+/* wyrównanie, żeby content zawsze był nad sheen */
+section > .container{
+  position: relative;
+  z-index: 1;
+}
+
+/* mobile: jeszcze minimalnie ciaśniej */
+@media (max-width: 720px){
+  section{ padding: 34px 0; }
 }
 
